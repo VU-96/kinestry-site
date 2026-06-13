@@ -135,13 +135,8 @@
     border:1px solid var(--hair2);border-radius:8px;padding:6px 12px;
   }
   .url b{color:var(--pine);font-weight:500}
-  .screen{position:relative;height:300px;background:var(--paper)}
-  .screen .node{width:138px;padding:11px 11px 10px}
-  .screen .ava{width:38px;height:38px;font-size:14px}
-  .screen h3{font-size:14.5px}
-  .b1{top:30px;left:50%;margin-left:-160px;animation-delay:.1s}
-  .b2{top:30px;left:50%;margin-left:24px;animation-delay:.2s}
-  .b3{top:168px;left:50%;margin-left:-69px;animation-delay:.3s}
+  .screen{position:relative;background:var(--paper)}
+  .screen img{display:block;width:100%;height:auto}
   .badge{
     position:absolute;left:14px;bottom:14px;background:var(--pine);color:#F4EFE4;
     font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:7px 12px;border-radius:999px;
@@ -315,13 +310,9 @@
           <span class="url">http://<b>kinestry.local</b>:8765</span>
         </div>
         <div class="screen">
-          <div class="node rise b1"><div class="ava">OU</div><h3>Omar Umar</h3><time>b. 1962</time></div>
-          <div class="node rise b2"><div class="ava">SH</div><h3>Sarah Hassan</h3><time>b. 1964</time></div>
-          <div class="node rise b3"><div class="ava">AU</div><h3>Adam Umar</h3><time>b. 1990</time></div>
-          <svg class="vines" viewBox="0 0 520 300" preserveAspectRatio="none" style="position:absolute;inset:0">
-            <path d="M170 100 C170 150 260 130 260 168" style="animation-delay:.4s"/>
-            <path d="M350 100 C350 150 260 130 260 168" style="animation-delay:.5s"/>
-          </svg>
+          <!-- The real thing: Desktop Mode live in a laptop browser. -->
+          <img src="desktop.png" alt="Kinestry's family tree canvas running live in a laptop browser via Desktop Mode"
+               width="1440" height="900" loading="lazy">
           <span class="badge"><i></i>DESKTOP MODE IS ON</span>
         </div>
       </div>
