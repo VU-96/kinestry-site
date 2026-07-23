@@ -7,9 +7,9 @@
 <meta name="description" content="Kinestry collects no data. Everything stays on your device.">
 <meta name="theme-color" content="#2C4034">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- No web fonts / third-party requests: a page that promises "no trackers"
+     must not phone home to a font CDN. Falls back to the system serif/sans/mono
+     stacks declared below. -->
 <style>
   :root{
     --paper:#ECE4D5; --card:#FBF8F1; --pine:#2C4034; --ochre:#A9712C;
@@ -64,7 +64,7 @@
 <main class="wrap">
   <div class="kicker">The fine print, kept short</div>
   <h1>Privacy Policy</h1>
-  <div class="date">Last updated · 12 June 2026</div>
+  <div class="date">Last updated · 23 June 2026</div>
 
   <div class="card">Kinestry collects no data. Everything you put into the app —
   names, dates, photos, notes — stays on your device. We never see it.</div>
@@ -88,6 +88,15 @@
   your phone's own web browser. Kinestry itself sends nothing — your browser makes
   that request, exactly as it would for any link you tap. We receive no information
   about you when you do this.</p>
+
+  <h2>Calendar</h2>
+  <p>If you tap "Add birthday" or "Add memorial day" on a person, Kinestry hands that
+  one date and name to your phone's own calendar app to create the event — a local
+  action, nothing is sent anywhere. On Desktop Mode (the browser version), the same
+  button instead opens Google Calendar's website with that name and date filled in,
+  since a browser has no device calendar to hand it to. That's the only case where
+  something you choose to add leaves your device, and only because you tapped that
+  specific button — exactly like the outbound links below.</p>
 
   <h2>Photos</h2>
   <p>If you attach photos to people in your tree, the app asks for photo access and
