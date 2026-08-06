@@ -1,0 +1,117 @@
+/* ═══ Kinestry — shared shell ═══════════════════════════════════════════
+   Every page links this. It used to be pasted into all three <style>
+   blocks, which is precisely how they drifted apart. One source now. */
+
+  /* ── palettes ──────────────────────────────────────────────────────────
+     The same four the app ships, with the app's own values. Switching one
+     re-themes the whole page, so the site demonstrates the feature instead
+     of describing it. Hairlines and shadows are derived from a base RGB
+     triplet so a dark palette gets light hairlines automatically. */
+  :root{
+    --paper:#ECE4D5; --paper2:#E4DBC8; --card:#FBF8F1; --pine:#2C4034; --pine2:#3C5746;
+    --ochre:#A9712C; --ink:#211C15; --ink2:#5B5341; --ink3:#8C846F; --onpine:#F3EFE6;
+    --hairbase:33,28,21; --shadowbase:33,28,21;
+    --grain-blend:multiply; --grain-opacity:.5;
+    --hair:rgba(var(--hairbase),.16); --hair2:rgba(var(--hairbase),.09);
+    --serif:'Newsreader',Georgia,serif; --sans:'Hanken Grotesk',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  :root[data-palette="dusk"]{
+    --paper:#231F1A; --paper2:#2B261F; --card:#2E2922; --pine:#9CC4A6; --pine2:#B4D6BC;
+    --ochre:#D6A65A; --ink:#F1EAD9; --ink2:#C9BFA9; --ink3:#9A9079; --onpine:#231F1A;
+    --hairbase:241,234,217; --shadowbase:0,0,0;
+    --grain-blend:overlay; --grain-opacity:.35;
+  }
+  :root[data-palette="archive"]{
+    --paper:#E9E7E2; --paper2:#E0DDD6; --card:#FAFAF8; --pine:#3B4C6B; --pine2:#4C5F80;
+    --ochre:#9A6A3A; --ink:#1E1E1F; --ink2:#54534F; --ink3:#84827C; --onpine:#F3EFE6;
+    --hairbase:30,30,31; --shadowbase:30,30,31;
+    --grain-blend:multiply; --grain-opacity:.4;
+  }
+  :root[data-palette="nocturne"]{
+    --paper:#1A1D23; --paper2:#21252D; --card:#262B33; --pine:#8FB6DE; --pine2:#AACAEC;
+    --ochre:#D9B06A; --ink:#E7EBF1; --ink2:#B7BFCC; --ink3:#868FA0; --onpine:#1A1D23;
+    --hairbase:231,235,241; --shadowbase:0,0,0;
+    --grain-blend:overlay; --grain-opacity:.3;
+  }
+  /* Someone whose system is dark should not be handed a bright page. */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-palette]){
+    --paper:#231F1A; --paper2:#2B261F; --card:#2E2922; --pine:#9CC4A6; --pine2:#B4D6BC;
+    --ochre:#D6A65A; --ink:#F1EAD9; --ink2:#C9BFA9; --ink3:#9A9079; --onpine:#231F1A;
+    --hairbase:241,234,217; --shadowbase:0,0,0;
+    --grain-blend:overlay; --grain-opacity:.35;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper); color:var(--ink); font-family:var(--sans);
+    line-height:1.6; overflow-x:hidden;
+  }
+  /* paper grain */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9;
+    opacity:var(--grain-opacity); mix-blend-mode:var(--grain-blend);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .47 0 0 0 0 .44 0 0 0 0 .40 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+/* ── header ── */
+  /* NB the selector must be `header.wrap`, not `header`. The element carries
+     class="wrap", and `.wrap{padding:0 28px}` is a SHORTHAND — it resets
+     block padding to 0 and outranks a bare element selector. A plain
+     `header{padding-block:…}` silently does nothing, which is why the nav sat
+     hard against the top of the viewport with the Download pill's shadow
+     clipped. */
+  header.wrap{padding-block:44px 26px}
+  .bar{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand svg{display:block}
+  .brand b{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.01em}
+  nav{display:flex;align-items:center;gap:26px}
+  nav a{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none}
+  nav a:hover{color:var(--pine)}
+  .pill{
+    background:var(--pine);color:var(--onpine)!important;padding:10px 20px;border-radius:999px;
+    box-shadow:0 1px 0 rgba(var(--shadowbase),.25), 0 10px 24px -14px rgba(var(--shadowbase),.55);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .pill:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(var(--shadowbase),.25),0 14px 30px -14px rgba(var(--shadowbase),.6)}
+  /* ── palette swatches ── */
+  .palettes{display:flex;gap:7px;align-items:center}
+  .sw{
+    width:17px;height:17px;border-radius:50%;padding:0;cursor:pointer;
+    border:1px solid var(--hair);background:var(--paper);position:relative;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .sw::after{
+    content:"";position:absolute;inset:3px;border-radius:50%;background:var(--pine);
+  }
+  .sw[data-palette="heirloom"]{background:#ECE4D5}.sw[data-palette="heirloom"]::after{background:#2C4034}
+  .sw[data-palette="dusk"]{background:#231F1A}.sw[data-palette="dusk"]::after{background:#9CC4A6}
+  .sw[data-palette="archive"]{background:#E9E7E2}.sw[data-palette="archive"]::after{background:#3B4C6B}
+  .sw[data-palette="nocturne"]{background:#1A1D23}.sw[data-palette="nocturne"]::after{background:#8FB6DE}
+  .sw:hover{transform:scale(1.16)}
+  .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--ochre)}
+/* Keyboard users got nothing before this. */
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--ochre);outline-offset:3px;border-radius:4px;
+  }
+/* ── footer ── */
+  /* footer */
+  footer{padding:64px 0 56px;border-top:1px solid var(--hair);margin-top:96px}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .foot small{display:block;color:var(--ink3);font-size:13px;margin-top:10px}
+  .foot a{color:var(--pine);font-weight:600;text-decoration:none;font-size:14px}
+  .foot .links{display:flex;gap:24px}
+  /* Google Play badge. Their brand guidelines want the artwork unmodified, at
+     least 40px tall, with clear space around it of a quarter its height — so
+     the margin is deliberate, not decorative. */
+  .play-badge{display:inline-block;margin-top:18px;line-height:0}
+  .play-badge img{height:48px;width:auto;display:block}
+
+@media (max-width:920px){
+  header.wrap{padding-block:28px 20px}
+  nav a:not(.pill){display:none}
+}
+
