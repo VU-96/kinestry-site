@@ -37,7 +37,13 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
   /* ── header ── */
-  header{padding-block:26px}
+  /* NB the selector must be `header.wrap`, not `header`. The element carries
+     class="wrap", and `.wrap{padding:0 28px}` is a SHORTHAND — it resets
+     block padding to 0 and outranks a bare element selector. A plain
+     `header{padding-block:…}` silently does nothing, which is why the nav sat
+     hard against the top of the viewport with the Download pill's shadow
+     clipped. */
+  header.wrap{padding-block:44px 26px}
   .bar{display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
   .brand svg{display:block}
@@ -160,8 +166,14 @@
   .foot small{display:block;color:var(--ink3);font-size:13px;margin-top:10px}
   .foot a{color:var(--pine);font-weight:600;text-decoration:none;font-size:14px}
   .foot .links{display:flex;gap:24px}
+  /* Google Play badge. Their brand guidelines want the artwork unmodified, at
+     least 40px tall, with clear space around it of a quarter its height — so
+     the margin is deliberate, not decorative. */
+  .play-badge{display:inline-block;margin-top:18px;line-height:0}
+  .play-badge img{height:48px;width:auto;display:block}
 
   @media (max-width:920px){
+    header.wrap{padding-block:28px 20px}
     .hero{grid-template-columns:1fr;padding-top:34px}
     .grove{height:460px;max-width:560px;margin:0 auto;width:100%}
     .desk{grid-template-columns:1fr}
@@ -357,6 +369,9 @@
       </a>
       <small>© 2026 · Your data stays home.<br>Only available on Google Play —
       copies from anywhere else are not ours.</small>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">
+        <img src="google-play-badge.png" alt="Get it on Google Play" width="646" height="250">
+      </a>
     </div>
     <div class="links">
       <a href="privacy.html">Privacy policy</a>
