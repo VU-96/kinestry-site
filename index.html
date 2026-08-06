@@ -112,6 +112,19 @@
   .stamp{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--pine);text-transform:uppercase}
   .stamp::before{content:"◆";color:var(--ochre);margin-right:10px;font-size:9px;vertical-align:2px}
 
+  /* maker's note — narrow on purpose, see the comment in the markup */
+  #maker{padding:0 0 96px}
+  .note{max-width:34rem;border-left:2px solid var(--ochre);padding-left:26px}
+  .note p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink)}
+  .note cite{
+    display:block;margin-top:16px;font-family:var(--mono);font-style:normal;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);
+  }
+  .note cite::before{content:"— "}
+
+  /* Two 96px paddings meeting between sections read as a dead gap. */
+  #privacy{padding-top:40px}
+
   /* ── sections ── */
   section{padding:96px 0}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
@@ -121,11 +134,10 @@
   /* features as a register/table-of-contents */
   .register{margin-top:46px;border-top:1px solid var(--hair)}
   .entry{
-    display:grid;grid-template-columns:84px 1fr 1.25fr;gap:26px;align-items:baseline;
+    display:grid;grid-template-columns:.85fr 1.25fr;gap:40px;align-items:baseline;
     padding:30px 6px;border-bottom:1px solid var(--hair);transition:background .25s ease;
   }
   .entry:hover{background:rgba(251,248,241,.6)}
-  .entry .no{font-family:var(--mono);font-size:13px;color:var(--ochre)}
   .entry h3{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.005em}
   .entry p{color:var(--ink2);font-size:15.5px}
 
@@ -156,9 +168,6 @@
   .promise .eyebrow{color:#C9A86C}
   .promise h2{color:#F4EFE4}
   .promise p{color:rgba(234,227,211,.78);max-width:58ch;margin:8px auto 0}
-  .promise .row{display:flex;justify-content:center;gap:42px;margin-top:40px;flex-wrap:wrap}
-  .promise .cell{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#C9A86C}
-  .promise .cell b{display:block;font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:0;color:#F4EFE4;text-transform:none;margin-bottom:6px}
 
   /* footer */
   footer{padding:64px 0 56px;border-top:1px solid var(--hair);margin-top:96px}
@@ -177,8 +186,7 @@
     .hero{grid-template-columns:1fr;padding-top:34px}
     .grove{height:460px;max-width:560px;margin:0 auto;width:100%}
     .desk{grid-template-columns:1fr}
-    .entry{grid-template-columns:56px 1fr;}
-    .entry p{grid-column:2}
+    .entry{grid-template-columns:1fr;gap:10px}
     nav a:not(.pill){display:none}
   }
   @media (max-width:480px){
@@ -268,32 +276,27 @@
 
       <div class="register">
         <div class="entry">
-          <span class="no">№ 01</span>
           <h3>A canvas like paper</h3>
           <p>Warm tones, classic serif names, connectors drawn the way you'd draw them by
           hand. Hundreds of relatives stay smooth — built and tested past 400 people.</p>
         </div>
         <div class="entry">
-          <span class="no">№ 02</span>
           <h3>Kinship, explained</h3>
           <p>Tap any two people and see exactly how they're connected — "your father's
           sister's grandson" — traced step by step through the tree.</p>
         </div>
         <div class="entry">
-          <span class="no">№ 03</span>
           <h3>Gentle with the past</h3>
           <p>Year-only dates are welcome; grandma's exact birthday can stay a family
           mystery. Photos, places and notes on every person.</p>
         </div>
         <div class="entry">
-          <span class="no">№ 04</span>
           <h3>Share the story</h3>
           <p>Export an elegant vector PDF to print as a poster, a high-resolution image
           for the family group chat, or GEDCOM — the universal format, so you're never
           locked in.</p>
         </div>
         <div class="entry">
-          <span class="no">№ 05</span>
           <h3>Backups you own</h3>
           <p>One tap writes a complete backup — photos included — to a file on your
           phone. Restore any time, or carry your whole tree to a new device.</p>
@@ -337,13 +340,24 @@
         <p>Kinestry has no servers, no accounts, no analytics and no trackers. Your
         family's names, dates and photos live in one place: your phone. The Play Store
         listing says "No data collected" because there is nothing to collect it with.</p>
-        <div class="row">
-          <div class="cell"><b>0</b>servers</div>
-          <div class="cell"><b>0</b>trackers</div>
-          <div class="cell"><b>1</b>place your data lives</div>
-          <div class="cell"><b>∞</b>how long it's yours</div>
-        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── a person, not a brand ──────────────────────────────────────────────
+       Deliberately narrow and quiet: every other section on this page is a
+       1080px centred box with an eyebrow above a serif headline, and that
+       sameness is what made the site feel machine-made. This one breaks it.
+       REPLACE THE SENTENCE with your own — a real reason you built this will
+       carry more than anything written for you. -->
+  <section id="maker">
+    <div class="wrap">
+      <blockquote class="note">
+        <p>Kinestry is made by one person, not a company. There are no investors
+        to answer to and nothing to sell — which is the only reason an app like
+        this can promise to stay free and stay off the cloud.</p>
+        <cite>Valeed Umar</cite>
+      </blockquote>
     </div>
   </section>
 </main>
