@@ -119,6 +119,9 @@
    wordmark on its own line, swatches and the pill centred beneath it. */
 @media (max-width:560px){
   .wrap{padding:0 20px}
+  /* 96px above and below reads as generous on a wide screen and as a dead
+     void on a 390px one, where two of them stack into most of a screenful. */
+  footer{margin-top:48px;padding:44px 0 40px}
   .bar{flex-wrap:wrap;justify-content:center;gap:14px}
   nav{width:100%;justify-content:center;gap:18px}
   .brand b{font-size:21px}
