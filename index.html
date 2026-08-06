@@ -150,6 +150,12 @@
   .promise p{color:color-mix(in srgb, var(--paper2) 78%, transparent);max-width:58ch;margin:8px auto 0}
 
 
+@media (max-width:560px){
+  /* See site.css: the desktop vertical rhythm leaves ~400px voids on a phone. */
+  section{padding:56px 0}
+  #maker{padding-bottom:44px}
+  #privacy{padding-top:24px}
+}
 @media (max-width:920px){
   .hero{grid-template-columns:1fr;padding-top:34px}
   .grove{height:460px;max-width:560px;margin:0 auto;width:100%}
