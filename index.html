@@ -5,9 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kinestry — a private, offline family tree</title>
 <meta name="description" content="Build a living tree of the people you love — and keep it, privately, forever on your device. No cloud, no account, no data collected.">
+<link rel="canonical" href="https://vu-96.github.io/kinestry-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kinestry">
+<meta property="og:url" content="https://vu-96.github.io/kinestry-site/">
 <meta property="og:title" content="Kinestry — every family is a story">
 <meta property="og:description" content="A private, offline family tree — beautifully kept on your device.">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="https://vu-96.github.io/kinestry-site/og.png">
+<meta property="og:image:alt" content="Kinestry — a private, offline family tree.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kinestry — every family is a story">
+<meta name="twitter:description" content="A private, offline family tree — beautifully kept on your device.">
+<meta name="twitter:image" content="https://vu-96.github.io/kinestry-site/og.png">
 <meta name="theme-color" content="#2C4034">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -35,6 +44,26 @@
   .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}.d5{animation-delay:.5s}
 
 
+
+  /* ── questions ──
+     <details> rather than a JS accordion: it opens with no script, it is
+     announced correctly by screen readers, and Ctrl+F finds the answer text
+     even while the panel is shut. */
+  .qa{border-top:1px solid var(--hair)}
+  .qa details{border-bottom:1px solid var(--hair)}
+  .qa summary{
+    list-style:none; cursor:pointer; padding:22px 0;
+    font-family:var(--serif); font-weight:600; font-size:20px; letter-spacing:-.005em;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary::after{
+    content:'+'; font-family:var(--mono); font-size:20px; color:var(--ochre);
+    line-height:1; transition:transform .2s ease;
+  }
+  .qa details[open] summary::after{transform:rotate(45deg)}
+  .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
+  @media (prefers-reduced-motion:reduce){.qa summary::after{transition:none}}
 
   /* ── the hero tree is the demo ── */
   .node{
@@ -173,6 +202,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 
 <header class="wrap">
   <div class="bar rise d1">
@@ -198,6 +228,7 @@
       <a href="#features">What it does</a>
       <a href="#desktop">Desktop Mode</a>
       <a href="#privacy">Privacy</a>
+      <a href="#questions">Questions</a>
       <div class="palettes" role="group" aria-label="Colour palette">
         <button type="button" class="sw" data-palette="heirloom" title="Parchment" aria-label="Parchment"></button>
         <button type="button" class="sw" data-palette="dusk" title="Dusk" aria-label="Dusk"></button>
@@ -209,7 +240,7 @@
   </div>
 </header>
 
-<main>
+<main id="content">
   <div class="wrap hero">
     <div>
       <div class="kicker rise d2">A family tree · kept like an heirloom</div>
@@ -355,6 +386,41 @@
     </div>
   </section>
 
+
+  <section id="questions">
+    <div class="wrap">
+      <div class="eyebrow">Questions</div>
+      <h2>The things people<br>ask first.</h2>
+
+      <div class="qa">
+        <details>
+          <summary>Does anything I type leave my phone?</summary>
+          <p>No. Kinestry has no servers, no accounts, no analytics and no trackers, so there is nowhere for it to go. Names, dates and photos are written to a database on your own device and stay there.</p>
+        </details>
+        <details>
+          <summary>What happens if I lose my phone?</summary>
+          <p>There is no cloud copy — that is the trade the app makes for privacy, and it is a real one. Kinestry writes a backup file you keep yourself, so make one and put it somewhere safe. A tree that exists only on a lost phone is gone.</p>
+        </details>
+        <details>
+          <summary>Does it cost anything?</summary>
+          <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.</p>
+        </details>
+        <details>
+          <summary>Is there an iPhone version?</summary>
+          <p>Not at the moment. Kinestry is an Android app, available only on Google Play — a copy from anywhere else is not ours.</p>
+        </details>
+        <details>
+          <summary>Can I work on my tree on a computer?</summary>
+          <p>Yes. Desktop Mode serves your tree to a browser on the same Wi‑Fi, so you can edit on a big screen with a keyboard. The connection is between your phone and your own computer; nothing travels over the internet.</p>
+        </details>
+        <details>
+          <summary>Will it handle names in my own script?</summary>
+          <p>Arabic, Hebrew, Hindi, Gujarati, Thai and Cyrillic names render properly on screen and in printed exports. Every one of those scripts carries its own typeface inside the app, so a PDF looks the way the tree does.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ── a person, not a brand ──────────────────────────────────────────────
        Deliberately narrow and quiet: every other section on this page is a
        1080px centred box with an eyebrow above a serif headline, and that
@@ -408,5 +474,61 @@
 
 
 <script src="site.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does anything I type leave my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Kinestry has no servers, no accounts, no analytics and no trackers, so there is nowhere for it to go. Names, dates and photos are written to a database on your own device and stay there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I lose my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no cloud copy — that is the trade the app makes for privacy, and it is a real one. Kinestry writes a backup file you keep yourself, so make one and put it somewhere safe. A tree that exists only on a lost phone is gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it cost anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Kinestry is free. There are no purchases inside it, no subscription and no adverts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an iPhone version?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at the moment. Kinestry is an Android app, available only on Google Play — a copy from anywhere else is not ours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I work on my tree on a computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Desktop Mode serves your tree to a browser on the same Wi‑Fi, so you can edit on a big screen with a keyboard. The connection is between your phone and your own computer; nothing travels over the internet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it handle names in my own script?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Arabic, Hebrew, Hindi, Gujarati, Thai and Cyrillic names render properly on screen and in printed exports. Every one of those scripts carries its own typeface inside the app, so a PDF looks the way the tree does."
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>
