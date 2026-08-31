@@ -1,0 +1,6 @@
+# Kinestry — https://vu-96.github.io/kinestry-site/
+# Everything here is public marketing copy; there is nothing to keep out.
+User-agent: *
+Allow: /
+
+Sitemap: https://vu-96.github.io/kinestry-site/sitemap.xml
