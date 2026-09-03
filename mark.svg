@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Kinestry">
+  <g transform="translate(-23.016,-33.333) scale(1.5873)">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M46 78 L46 52"/>
+      <path d="M46 52 C46 40 30 40 26 30"/>
+      <path d="M46 52 C46 40 62 40 66 30"/>
+      <path d="M46 56 C46 48 38 46 34 56"/>
+      <path d="M46 56 C46 48 54 46 58 56"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="46" cy="50" r="4.5"/>
+      <circle cx="24" cy="27" r="6"/>
+      <circle cx="68" cy="27" r="6"/>
+      <circle cx="33" cy="58" r="4.5"/>
+      <circle cx="59" cy="58" r="4.5"/>
+    </g>
+    <rect x="42" y="78" width="8" height="6" rx="2" fill="var(--ochre)"/>
+  </g>
+</svg>
