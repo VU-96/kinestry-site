@@ -36,6 +36,8 @@
   h1 em{font-style:italic;color:var(--pine)}
   .lede{font-size:18px;color:var(--ink2);max-width:46ch}
   .cta{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+  .cta .quiet{color:var(--ink3);text-decoration:none;border-bottom:1px solid currentColor;font-size:15px;align-self:center}
+  .cta .quiet:hover{color:var(--pine)}
   .soon{font-family:var(--mono);font-size:12.5px;color:var(--ink3)}
   .soon a{color:var(--ochre);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--ochre) 40%, transparent)}
   /* load reveal */
@@ -253,6 +255,9 @@
       privately, forever on your device. No cloud. No account. No subscription.</p>
       <div class="cta rise d5">
         <a class="pill" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">Download on Google Play</a>
+        <!-- A link, never an embed: an embedded player would load a third-party
+             script on a page that promises no trackers. -->
+        <a class="quiet" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">Watch the 30-second film</a>
       </div>
       <p class="kin" id="kin" aria-live="polite">Tap two people to see how they're related.</p>
     </div>
@@ -297,7 +302,8 @@
         <div class="entry">
           <h3>A canvas like paper</h3>
           <p>Warm tones, classic serif names, connectors drawn the way you'd draw them by
-          hand. Hundreds of relatives stay smooth — built and tested past 400 people.</p>
+          hand. Hundreds of relatives stay smooth — a family of 530 lays out in
+          milliseconds.</p>
         </div>
         <div class="entry">
           <h3>Kinship, explained</h3>
@@ -340,12 +346,16 @@
           <p>Export an elegant vector PDF to print as a poster, a high-resolution image
           for the family group chat, or GEDCOM — the universal format, so you're never
           locked in. Exports keep the card style you chose, so the photo you framed is
-          the photo that prints.</p>
+          the photo that prints. A few hundred people fit on a single page; a tree
+          wider than that prints a branch at a time, and the app says so before it
+          tries.</p>
         </div>
         <div class="entry">
           <h3>Backups you own</h3>
           <p>One tap writes a complete backup — photos included — to a file on your
-          phone. Restore any time, or carry your whole tree to a new device.</p>
+          phone. Each tree keeps its own, so "last backed up" always means the family
+          you are looking at. Restore any time, or carry your whole tree to a new
+          device.</p>
         </div>
       </div>
     </div>
