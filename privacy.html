@@ -80,7 +80,7 @@
 <main class="wrap" id="content">
   <div class="kicker">The fine print, kept short</div>
   <h1>Privacy Policy</h1>
-  <div class="date">Last updated · 7 October 2026</div>
+  <div class="date">Last updated · 9 October 2026</div>
 
   <div class="card">Kinestry collects none of your family's data. Everything you put into the app —
   names, dates, photos, notes — stays on your device. We never see it.</div>
@@ -93,7 +93,9 @@
   sign-in, no analytics, no advertising and no trackers of any kind.</p>
 
   <h2>Internet access</h2>
-  <p>Kinestry requests the network permission for one feature:
+  <p>Two things in Kinestry touch the network, and neither one sends your tree
+  anywhere.</p>
+  <p>The first, and the reason Kinestry requests the network permission at all, is
   <strong>Desktop Mode</strong>, which lets a laptop browser on your own Wi-Fi network
   view and edit your tree while your phone is present. This traffic flows directly
   between your phone and your laptop on your local network. It never touches the
@@ -111,6 +113,13 @@
   read what passes between your phone and your laptop. <strong>On a network you do not
   trust, leave Desktop Mode off.</strong> It is off unless you turn it on, it stops
   when you tell it to, and nothing is served while it is off.</p>
+
+  <p>The second is the <strong>rating pop-up</strong>. When Kinestry asks whether you
+  would like to rate it, the dialog is drawn by the Google Play app on your phone, not
+  by Kinestry, and Play does its own network work to show it. Google therefore knows it
+  was asked for. Kinestry is told nothing back. Not whether it appeared, not whether
+  you rated anything, not what you said, and no part of your tree is involved. There
+  is more on this under "Asking you to rate the app" below.</p>
 
   <h2>Asking you to rate the app</h2>
   <p>Once, after you have used Kinestry properly — a second finished export, or a
@@ -159,8 +168,26 @@
   ours. If you would rather nothing left the device, add the date from your phone.</p>
 
   <h2>Photos</h2>
-  <p>If you attach photos to people in your tree, the app asks for photo access and
-  keeps a copy inside its own private storage. Photos are never uploaded.</p>
+  <p>If you attach photos to people in your tree, Android's own photo picker opens
+  and hands Kinestry <em>only the picture you chose</em>. Kinestry holds no photo or
+  storage permission at all, so it cannot see the rest of your gallery, and it never
+  asks you for one. The picture you pick is copied into the app's own private storage.
+  Photos are never uploaded.</p>
+
+  <h2>Backup, and moving to a new phone</h2>
+  <p>Android can copy an app's data to Google's servers automatically, and can
+  carry it across when you set up a new phone. Kinestry switches both of these
+  off.</p>
+  <p>Nothing is sent to Google's backup service, on any version of Android. And
+  when you move to a new phone, Android's transfer will not carry your tree
+  across either. Your family data stays on the one handset it was entered on,
+  which is what the rest of this policy promises.</p>
+  <p><strong>This matters for you, so please read it.</strong> Because there is
+  no cloud copy and no account, the database on your phone is the only copy of
+  your tree. If you lose the phone, replace it, or wipe it, that copy goes with
+  it. Use <em>Settings, then Back up tree</em> to write a backup file, and keep
+  that file somewhere you control. Opening it on the new phone brings everything
+  back.</p>
 
   <h2>Notifications and reminders</h2>
   <p>Kinestry shows two kinds of notification, both created entirely on your phone.</p>
@@ -169,7 +196,9 @@
   running.</p>
   <p>The second is optional. If you switch on <strong>"Remind me on the day"</strong>,
   the app schedules a quiet note each morning for a birthday, memorial day or
-  anniversary already recorded in your tree. These reminders are built and delivered by
+  anniversary already recorded in your tree. Like any notification it may vibrate your
+  phone, which is the one reason Kinestry carries Android's vibrate permission. These
+  reminders are built and delivered by
   your phone alone: nothing is sent anywhere, no reminder service is involved, and the
   text never leaves the device. Turning the switch off removes every pending reminder.
   Because Android forgets scheduled alarms when a phone restarts, the app asks for
