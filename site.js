@@ -128,11 +128,16 @@
     if (!window.fetch || !window.URL || !URL.createObjectURL) return;
 
     var FRAMES = 27;
-    // 26 frames at 90ms plus 160ms on the hold frame is 2.5s exactly. The
-    // odd first number is not a fudge: a GIF stores delays in hundredths of a
-    // second, so the avatar cannot run at 92.6ms, and these two keep the tab
-    // icon and the profile picture on the same rhythm.
-    var MS = 90, FIRST_MS = 160;
+    // 26 frames at 50ms plus 100ms on the hold frame: a 1.4 second loop.
+    //
+    // **Deliberately quicker than the mail avatar's 2.5s, which is the same
+    // 27 frames.** A profile picture is looked AT, so it can take its time; a
+    // tab icon is caught in the corner of the eye while someone reads the
+    // page, and at 2.5s the tree looked like it was struggling rather than
+    // growing. The two are not meant to match, and nothing here needs them to
+    // — the avatar's timing lives in tool/build_mail_avatar.py, where a GIF
+    // forces delays into hundredths of a second anyway.
+    var MS = 50, FIRST_MS = 100;
     var head = document.head;
     var statics = [].slice.call(head.querySelectorAll('link[rel~="icon"]'));
     if (!statics.length) return;
