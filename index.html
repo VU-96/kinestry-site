@@ -506,6 +506,31 @@
 
 
 <script src="site.js" defer></script>
+<!-- The app itself, for search engines. Deliberately carries NO aggregateRating
+     and NO softwareVersion: Play shows no public star rating for Kinestry yet,
+     and a version number here would go stale the day after every release. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Kinestry",
+  "description": "A private, offline family tree for Android. Build a living tree of the people you love and keep it on your own device \u2014 no cloud, no account, no trackers.",
+  "url": "https://kinestry.app/",
+  "image": "https://kinestry.app/og.png",
+  "screenshot": "https://kinestry.app/desktop.png",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Android",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.kinestry.kinestry",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.kinestry.kinestry",
+  "isFamilyFriendly": true,
+  "inLanguage": "en",
+  "author": { "@type": "Organization", "name": "Valeed Labs", "email": "kinestryapp@gmail.com" },
+  "publisher": { "@type": "Organization", "name": "Valeed Labs" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "privacyPolicy": "https://kinestry.app/privacy.html",
+  "termsOfService": "https://kinestry.app/terms.html"
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
