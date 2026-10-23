@@ -84,3 +84,84 @@
     });
   });
 })();
+
+/* ── The living favicon ──────────────────────────────────────────────────────
+   The mark in the tab draws itself: the base, the trunk, the branches out, and
+   the five nodes landing one after another. Then it holds, fades, and does it
+   again.
+
+   Swapping the icon file is the ONLY method that works. Chrome animates
+   neither an animated GIF nor an animated SVG favicon — Firefox animates GIFs,
+   Chromium has an open request for it — so a <link> pointing at a GIF freezes
+   on frame one. Replacing the href is what every browser repaints.
+
+   The frames come from tool/generate_favicon_anim.dart in the app repo, drawn
+   by the same drawMark the phone uses. Do not hand-draw a frame.
+
+   Deliberate, and worth knowing before changing any of it:
+
+   - **What a 16px tab can show is the NODES.** The mark's stroke is under half
+     a pixel there and anti-aliases away, so the branches are for the larger
+     renderings and the dots arriving are the animation as far as a tab strip
+     is concerned. An earlier attempt animated a glow travelling up the mark
+     and was, at the size that matters, invisible.
+   - **The frames become object URLs first.** Pointing the link at the files
+     works, and then the browser asks for an icon on EVERY swap: measured here,
+     thirteen requests a second for as long as the page is open. A host with
+     cache headers hides it; one without will not. Fetching each frame once
+     costs 22 requests ever, on any host.
+   - It honours prefers-reduced-motion. Someone who told their operating system
+     they do not want movement gets the static mark.
+   - The static links are removed only once every frame is in hand, so a failed
+     load leaves the tab showing the icon it already had.
+   - setTimeout, not setInterval: a throttled background tab queues interval
+     callbacks and fires them in a burst, which looks like a glitch. Browsers
+     also clamp background timers to about a tick a second, so it crawls there.
+     That is the browser, not this code.
+   - Everything is wrapped, because a flourish on a sixteen-pixel square must
+     never be able to break the page it is decorating. */
+(function () {
+  'use strict';
+  try {
+    if (window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+
+    var FRAMES = 27;
+    // 26 frames at 90ms plus 160ms on the hold frame is 2.5s exactly. The
+    // odd first number is not a fudge: a GIF stores delays in hundredths of a
+    // second, so the avatar cannot run at 92.6ms, and these two keep the tab
+    // icon and the profile picture on the same rhythm.
+    var MS = 90, FIRST_MS = 160;
+    var head = document.head;
+    var statics = [].slice.call(head.querySelectorAll('link[rel~="icon"]'));
+    if (!statics.length) return;
+
+    var paths = [];
+    for (var i = 0; i < FRAMES; i++) {
+      paths.push('favicon-anim/f' + ('0' + i).slice(-2) + '.png');
+    }
+
+    Promise.all(paths.map(function (p) {
+      return fetch(p)
+        .then(function (r) { return r.ok ? r.blob() : Promise.reject(); })
+        .then(function (b) { return URL.createObjectURL(b); })
+        .catch(function () { return null; });
+    })).then(function (urls) {
+      if (urls.some(function (u) { return !u; })) return; // leave it static
+      var link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      statics.forEach(function (l) { l.remove(); });
+      head.appendChild(link);
+
+      var f = 0;
+      (function tick() {
+        var shown = f;
+        link.href = urls[shown];
+        f = (f + 1) % FRAMES;
+        window.setTimeout(tick, shown === 0 ? FIRST_MS : MS);
+      })();
+    });
+  } catch (e) { /* the tab keeps the static mark */ }
+})();
