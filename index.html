@@ -65,6 +65,9 @@
   }
   .qa details[open] summary::after{transform:rotate(45deg)}
   .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
+  /* Nothing else in the FAQ is a link, so an unstyled one lands as browser blue. */
+  .qa p a{color:var(--pine); font-weight:600; text-decoration:underline; text-underline-offset:3px}
+  .qa p a:hover{color:var(--pine2)}
   @media (prefers-reduced-motion:reduce){.qa summary::after{transition:none}}
 
   /* ── the hero tree is the demo ── */
@@ -440,7 +443,8 @@
         </details>
         <details>
           <summary>Does it cost anything?</summary>
-          <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.</p>
+          <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.
+          If you would like to support it anyway, there is a <a href="https://ko-fi.com/kinestry" rel="noopener">tip jar</a>.</p>
         </details>
         <details>
           <summary>Is there an iPhone version?</summary>
@@ -557,7 +561,7 @@
       "name": "Does it cost anything?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Kinestry is free. There are no purchases inside it, no subscription and no adverts."
+        "text": "No. Kinestry is free. There are no purchases inside it, no subscription and no adverts. If you would like to support it anyway, there is a tip jar on this page."
       }
     },
     {
