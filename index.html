@@ -133,6 +133,17 @@
   }
   .note cite::before{content:"— "}
 
+  /* Tip link. Deliberately NOT in the app: Play treats an in-app donation
+     link as a payments-policy violation, and apps have been removed for one. */
+  .support{max-width:34rem;margin-top:34px;padding-left:28px}
+  .support a{
+    display:inline-block;background:var(--pine);color:var(--onpine);
+    padding:11px 22px;border-radius:999px;text-decoration:none;font-weight:600;
+    font-size:15px;
+  }
+  .support a:hover{background:var(--pine2)}
+  .support small{display:block;margin-top:14px;color:var(--ink3);font-size:14.5px;line-height:1.6}
+
   /* Two 96px paddings meeting between sections read as a dead gap. */
   #privacy{padding-top:40px}
 
@@ -461,6 +472,11 @@
         this can promise to stay free and stay off the cloud.</p>
         <cite>Developer</cite>
       </blockquote>
+      <p class="support">
+        <a href="https://ko-fi.com/kinestry" rel="noopener">Buy me a coffee</a>
+        <small>There is nothing to buy inside Kinestry and there never will be.
+        If it has been useful to your family, a coffee is a kind way to say so.</small>
+      </p>
     </div>
   </section>
 </main>
@@ -497,6 +513,7 @@
       </a>
     </div>
     <div class="links">
+      <a href="https://ko-fi.com/kinestry" rel="noopener">Buy me a coffee</a>
       <a href="privacy.html">Privacy policy</a>
       <a href="terms.html">Terms of use</a>
       <a href="mailto:kinestryapp@gmail.com">kinestryapp@gmail.com</a>
