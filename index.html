@@ -65,9 +65,6 @@
   }
   .qa details[open] summary::after{transform:rotate(45deg)}
   .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
-  /* Nothing else in the FAQ is a link, so an unstyled one lands as browser blue. */
-  .qa p a{color:var(--pine); font-weight:600; text-decoration:underline; text-underline-offset:3px}
-  .qa p a:hover{color:var(--pine2)}
   @media (prefers-reduced-motion:reduce){.qa summary::after{transition:none}}
 
   /* ── the hero tree is the demo ── */
@@ -135,17 +132,6 @@
     font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);
   }
   .note cite::before{content:"— "}
-
-  /* Tip link. Deliberately NOT in the app: Play treats an in-app donation
-     link as a payments-policy violation, and apps have been removed for one. */
-  .support{max-width:34rem;margin-top:34px;padding-left:28px}
-  .support a{
-    display:inline-block;background:var(--pine);color:var(--onpine);
-    padding:11px 22px;border-radius:999px;text-decoration:none;font-weight:600;
-    font-size:15px;
-  }
-  .support a:hover{background:var(--pine2)}
-  .support small{display:block;margin-top:14px;color:var(--ink3);font-size:14.5px;line-height:1.6}
 
   /* Two 96px paddings meeting between sections read as a dead gap. */
   #privacy{padding-top:40px}
@@ -443,8 +429,7 @@
         </details>
         <details>
           <summary>Does it cost anything?</summary>
-          <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.
-          If you would like to support it anyway, there is a <a href="https://ko-fi.com/kinestry" rel="noopener">tip jar</a>.</p>
+          <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.</p>
         </details>
         <details>
           <summary>Is there an iPhone version?</summary>
@@ -476,11 +461,6 @@
         this can promise to stay free and stay off the cloud.</p>
         <cite>Developer</cite>
       </blockquote>
-      <p class="support">
-        <a href="https://ko-fi.com/kinestry" rel="noopener">Buy me a coffee</a>
-        <small>There is nothing to buy inside Kinestry and there never will be.
-        If it has been useful to your family, a coffee is a kind way to say so.</small>
-      </p>
     </div>
   </section>
 </main>
@@ -517,7 +497,6 @@
       </a>
     </div>
     <div class="links">
-      <a href="https://ko-fi.com/kinestry" rel="noopener">Buy me a coffee</a>
       <a href="privacy.html">Privacy policy</a>
       <a href="terms.html">Terms of use</a>
       <a href="mailto:kinestryapp@gmail.com">kinestryapp@gmail.com</a>
@@ -561,7 +540,7 @@
       "name": "Does it cost anything?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Kinestry is free. There are no purchases inside it, no subscription and no adverts. If you would like to support it anyway, there is a tip jar on this page."
+        "text": "No. Kinestry is free. There are no purchases inside it, no subscription and no adverts."
       }
     },
     {
