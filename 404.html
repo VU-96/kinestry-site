@@ -10,6 +10,14 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+<!-- Preloaded, not merely linked: without this the browser must fetch and
+     parse fonts.css before it can discover the faces, which on a throttled
+     mobile connection is two round trips before a single glyph is asked
+     for. Measured with Lighthouse 2026-10-24. Only the two faces used
+     above the fold are preloaded; preloading all four would simply move
+     the contention earlier. -->
+<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
 <style>
