@@ -139,3 +139,10 @@
   padding:12px 18px; border-radius:0 0 10px 0; text-decoration:none;
 }
 .skip:focus{left:0}
+
+/* Shared by every page, so the two hover transitions above are honoured on
+   the policy pages too and not only on the home page, whose own block covers
+   the hero tree. */
+@media (prefers-reduced-motion:reduce){
+  .pill,.sw{transition:none}
+}

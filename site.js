@@ -109,7 +109,7 @@
      works, and then the browser asks for an icon on EVERY swap: measured here,
      thirteen requests a second for as long as the page is open. A host with
      cache headers hides it; one without will not. Fetching each frame once
-     costs 22 requests ever, on any host.
+     costs 27 requests ever, on any host.
    - It honours prefers-reduced-motion. Someone who told their operating system
      they do not want movement gets the static mark.
    - The static links are removed only once every frame is in hand, so a failed
@@ -124,15 +124,26 @@
   'use strict';
 
   // Deferred until the page has loaded AND the browser is idle. Measured with
-  // Lighthouse on 2026-10-24: these 27 frames are ~116 KB and were being
-  // fetched during first paint, competing with the fonts on a throttled
-  // mobile connection for an ornament in a 16px square. Nobody has looked at
-  // the tab icon before the page has painted.
+  // Lighthouse on 2026-10-24: the frames were being fetched during first
+  // paint, competing with the fonts on a throttled mobile connection for an
+  // ornament in a 16px square. Nobody has looked at the tab icon before the
+  // page has painted. The same measurement halved the frames' resolution -
+  // they were 128px for a 16px slot, 75 KB, and are now 64px and 37 KB; see
+  // tool/generate_favicon_anim.dart in the app repo for why 64 and not 48.
   function start() {
     try {
       if (window.matchMedia &&
           window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+      // Not on a metered or slow connection. The frames are 37 KB for an
+      // ornament in a 16px square; someone on 2G, or who has asked their
+      // browser to save data, is better served by the static mark. This is
+      // for real visitors, not for a score: Lighthouse's simulated
+      // throttling leaves navigator.connection reporting 4g, so the check
+      // never fires in a lab run and cannot flatter one.
+      var c = navigator.connection || navigator.mozConnection;
+      if (c && (c.saveData === true ||
+                /^(slow-2g|2g|3g)$/.test(c.effectiveType || ''))) return;
       run();
     } catch (e) { /* the tab keeps the static mark */ }
   }
