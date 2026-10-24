@@ -100,6 +100,9 @@
 
    Deliberate, and worth knowing before changing any of it:
 
+   - **It runs three times and stops, it does not loop.** See LOOPS below:
+     every href swap is a fresh blob read, so an endless loop bills the
+     visitor twenty reads a second for as long as the tab is open.
    - **What a 16px tab can show is the NODES.** The mark's stroke is under half
      a pixel there and anti-aliases away, so the branches are for the larger
      renderings and the dots arriving are the animation as far as a tab strip
@@ -166,6 +169,18 @@
     // — the avatar's timing lives in tool/build_mail_avatar.py, where a GIF
     // forces delays into hundredths of a second anyway.
     var MS = 50, FIRST_MS = 100;
+    // Three cycles, about four seconds, and then it stops on the finished
+    // tree. NOT a loop. Measured on 2026-10-24: assigning link.href makes the
+    // browser re-read the blob on every single swap, so an endless loop costs
+    // roughly twenty blob reads a second for as long as the tab exists - on
+    // every open tab, forever, for an ornament in a 16px square. It also made
+    // mobile Lighthouse swing between 95 and 99 depending on how much of the
+    // animation fell inside the trace. Object URLs removed the cost of
+    // fetching the 27 frame FILES; they did not remove the cost of swapping
+    // between them, and that distinction is the whole reason this constant
+    // exists. Nobody watches a favicon for more than a few seconds; the part
+    // anyone sees is the mark drawing itself on arrival, and that is kept.
+    var LOOPS = 3;
     var head = document.head;
     var statics = [].slice.call(head.querySelectorAll('link[rel~="icon"]'));
     if (!statics.length) return;
@@ -188,11 +203,16 @@
       statics.forEach(function (l) { l.remove(); });
       head.appendChild(link);
 
-      var f = 0;
+      var f = 0, loops = 0;
       (function tick() {
         var shown = f;
         link.href = urls[shown];
         f = (f + 1) % FRAMES;
+        // A cycle ends on frame 26, which is byte-identical to frame 0: the
+        // finished tree. So the loop stops on the frame it was always going
+        // to pass through and nothing jumps - no reassignment needed, and no
+        // further swap of any kind.
+        if (f === 0 && ++loops >= LOOPS) return;
         window.setTimeout(tick, shown === 0 ? FIRST_MS : MS);
       })();
     });
