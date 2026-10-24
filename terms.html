@@ -20,6 +20,14 @@
 <meta name="theme-color" content="#2C4034">
 <link rel="icon" type="image/png" href="favicon.png">
 <!-- Self-hosted OFL fonts (Latin subset) — no third-party CDN requests. -->
+<!-- Preloaded, not merely linked: without this the browser must fetch and
+     parse fonts.css before it can discover the faces, which on a throttled
+     mobile connection is two round trips before a single glyph is asked
+     for. Measured with Lighthouse 2026-10-24. Only the two faces used
+     above the fold are preloaded; preloading all four would simply move
+     the contention earlier. -->
+<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
 <style>

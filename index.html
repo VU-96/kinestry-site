@@ -22,6 +22,14 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <!-- Self-hosted OFL fonts (Latin subset) — no third-party CDN requests. -->
+<!-- Preloaded, not merely linked: without this the browser must fetch and
+     parse fonts.css before it can discover the faces, which on a throttled
+     mobile connection is two round trips before a single glyph is asked
+     for. Measured with Lighthouse 2026-10-24. Only the two faces used
+     above the fold are preloaded; preloading all four would simply move
+     the contention earlier. -->
+<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -104,7 +112,7 @@
     border:1px solid var(--hair2);display:flex;align-items:center;justify-content:center;
     font-family:var(--serif);font-weight:600;font-size:17px;color:var(--pine);
   }
-  .node h3{font-family:var(--serif);font-weight:600;font-size:16.5px;line-height:1.2;color:var(--ink)}
+  .node .nm{display:block;font-family:var(--serif);font-weight:600;font-size:16.5px;line-height:1.2;color:var(--ink)}
   .node time{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink3)}
   .sway{animation:rise .7s ease forwards, sway 7s ease-in-out 2s infinite}
   /* hover lift would fight the sway keyframes, so lift the inner text instead */
@@ -176,7 +184,7 @@
 
   /* promise */
   .promise{background:var(--pine);color:var(--paper2);border-radius:26px;padding:74px 8%;text-align:center}
-  .promise .eyebrow{color:var(--ochre)}
+  .promise .eyebrow{color:var(--onpine);opacity:.86}
   .promise h2{color:var(--onpine)}
   .promise p{color:color-mix(in srgb, var(--paper2) 78%, transparent);max-width:58ch;margin:8px auto 0}
 
@@ -196,7 +204,7 @@
   @media (max-width:480px){
     .node{width:128px;padding:11px 10px 10px}
     .node .ava{width:38px;height:38px;font-size:14px}
-    .node h3{font-size:14px}
+    .node .nm{font-size:14px}
     .grove{height:420px}
     .n1{left:3%}.n2{right:3%}.n3{margin-left:-64px}
     .n4{left:6%}.n5{right:6%}
@@ -274,11 +282,11 @@
         <path d="M260 282 C260 330 142 310 142 352"/>
         <path d="M260 282 C260 330 378 310 378 352"/>
       </svg>
-      <button type="button" class="node sway n1" data-person="ibrahim" aria-pressed="false"><span class="ava">IU</span><h3>Ibrahim Umar</h3><time>1935 — 2010</time></button>
-      <button type="button" class="node sway n2" data-person="fatima" aria-pressed="false"><span class="ava">FA</span><h3>Fatima Al-Rashidi</h3><time>b. 1940</time></button>
-      <button type="button" class="node sway n3" data-person="nadia" aria-pressed="false"><span class="ava">NU</span><h3>Nadia Umar</h3><time>b. 1964</time></button>
-      <button type="button" class="node sway n4" data-person="khalid" aria-pressed="false"><span class="ava">KB</span><h3>Khalid Benhaddou</h3><time>b. 1991</time></button>
-      <button type="button" class="node sway n5" data-person="dina" aria-pressed="false"><span class="ava">DB</span><h3>Dina Benhaddou</h3><time>b. 1993</time></button>
+      <button type="button" class="node sway n1" data-person="ibrahim" aria-pressed="false"><span class="ava">IU</span><span class="nm">Ibrahim Umar</span><time>1935 — 2010</time></button>
+      <button type="button" class="node sway n2" data-person="fatima" aria-pressed="false"><span class="ava">FA</span><span class="nm">Fatima Al-Rashidi</span><time>b. 1940</time></button>
+      <button type="button" class="node sway n3" data-person="nadia" aria-pressed="false"><span class="ava">NU</span><span class="nm">Nadia Umar</span><time>b. 1964</time></button>
+      <button type="button" class="node sway n4" data-person="khalid" aria-pressed="false"><span class="ava">KB</span><span class="nm">Khalid Benhaddou</span><time>b. 1991</time></button>
+      <button type="button" class="node sway n5" data-person="dina" aria-pressed="false"><span class="ava">DB</span><span class="nm">Dina Benhaddou</span><time>b. 1993</time></button>
     </div>
   </div>
 

@@ -122,11 +122,28 @@
      never be able to break the page it is decorating. */
 (function () {
   'use strict';
-  try {
-    if (window.matchMedia &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.fetch || !window.URL || !URL.createObjectURL) return;
 
+  // Deferred until the page has loaded AND the browser is idle. Measured with
+  // Lighthouse on 2026-10-24: these 27 frames are ~116 KB and were being
+  // fetched during first paint, competing with the fonts on a throttled
+  // mobile connection for an ornament in a 16px square. Nobody has looked at
+  // the tab icon before the page has painted.
+  function start() {
+    try {
+      if (window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+      run();
+    } catch (e) { /* the tab keeps the static mark */ }
+  }
+  function whenIdle(fn) {
+    if (window.requestIdleCallback) window.requestIdleCallback(fn, {timeout: 4000});
+    else window.setTimeout(fn, 1200);
+  }
+  if (document.readyState === 'complete') whenIdle(start);
+  else window.addEventListener('load', function () { whenIdle(start); }, {once: true});
+
+  function run() {
     var FRAMES = 27;
     // 26 frames at 50ms plus 100ms on the hold frame: a 1.4 second loop.
     //
@@ -168,5 +185,5 @@
         window.setTimeout(tick, shown === 0 ? FIRST_MS : MS);
       })();
     });
-  } catch (e) { /* the tab keeps the static mark */ }
+  }
 })();
