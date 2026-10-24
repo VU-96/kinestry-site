@@ -73,7 +73,23 @@
   }
   .qa details[open] summary::after{transform:rotate(45deg)}
   .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
-  @media (prefers-reduced-motion:reduce){.qa summary::after{transition:none}}
+  /* Someone who has told their operating system they do not want movement
+     was still getting the whole page: five cards rising in sequence, 520
+     units of branch drawing themselves, then a tree that sways for as long
+     as the tab is open and a dot that pulses forever. The one rule here
+     before this covered a plus sign rotating in the FAQ.
+
+     `animation:none` rather than a shortened duration, because `rise` and
+     `draw` start from opacity 0 and stroke-dashoffset 520 - a cancelled
+     animation must not leave the tree invisible, so the end state is
+     restated. The favicon animation checks the same query in site.js. */
+  @media (prefers-reduced-motion:reduce){
+    .qa summary::after{transition:none}
+    .rise,.node,.sway{animation:none;opacity:1;transform:none}
+    .vines path{animation:none;stroke-dashoffset:0}
+    .badge i{animation:none}
+    .node,.sw,.kin{transition:none}
+  }
 
   /* ── the hero tree is the demo ── */
   .node{
@@ -116,7 +132,7 @@
   .node time{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink3)}
   .sway{animation:rise .7s ease forwards, sway 7s ease-in-out 2s infinite}
   /* hover lift would fight the sway keyframes, so lift the inner text instead */
-  .node:hover h3{color:var(--pine)}
+  .node:hover .nm{color:var(--pine)}
   @keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   .n1{top:6px;left:8%;animation-delay:.55s, 2s}
   .n2{top:6px;right:8%;animation-delay:.68s, 2.6s}
