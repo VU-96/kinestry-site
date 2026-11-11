@@ -94,7 +94,7 @@
   .sw:hover{transform:scale(1.16)}
   .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--ochre)}
 /* Keyboard users got nothing before this. */
-  a:focus-visible,button:focus-visible{
+  a:focus-visible,button:focus-visible,summary:focus-visible{
     outline:2px solid var(--ochre);outline-offset:3px;border-radius:4px;
   }
 /* ── footer ── */
@@ -144,5 +144,8 @@
    the policy pages too and not only on the home page, whose own block covers
    the hero tree. */
 @media (prefers-reduced-motion:reduce){
-  .pill,.sw{transition:none}
+  .pill,.sw,.entry{transition:none}
+  /* Every nav link on the home page is an in-page jump, so smooth scrolling
+     is the one piece of motion a reader who asked for none still got. */
+  html{scroll-behavior:auto}
 }
