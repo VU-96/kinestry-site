@@ -1,0 +1,67 @@
+# Kinestry
+
+> Kinestry is a free family tree and genealogy app for Android that keeps
+> everything on the phone. There is no account, no cloud sync, no subscription,
+> no advertising and no analytics or tracking of any kind. The app has no
+> servers, so a family tree exists only on the device its owner built it on.
+
+Kinestry is published by Valeed Labs. The app is free; it contains no ads and
+no in-app purchases. The store listing is available in 76 languages, although
+the app's own interface is English.
+
+## What it does
+
+- Builds a family tree of parents, partners, children and other relatives, from
+  a few people to several hundred, on a paper-like canvas.
+- Holds several separate family trees on one device, each in its own database.
+- Records birth, marriage and death dates with flexible precision, plus
+  photographs, notes, places, residences and life events.
+- Marks marriages as divorced or separated, disconnects incorrect
+  relationships without deleting anyone, and undoes relationship changes.
+- Shows how any two people in a tree are related.
+- Searches the tree and shows a person's age and residence on their card.
+- Reorders siblings and adjusts connecting lines and spacing.
+- Exports the tree as PDF (several page sizes up to A0), PNG, GEDCOM, or a
+  JSON backup file the owner keeps.
+- Desktop Mode: the phone runs a small web server on the local Wi-Fi network so
+  a laptop browser can view and edit the same tree. Pairing needs a code shown
+  on the phone and explicit approval. Nothing goes over the internet.
+- Optional reminders for birthdays, anniversaries and memorial days, scheduled
+  and delivered entirely by the phone.
+- Renders names in many scripts, including Arabic, Hebrew, Chinese, Korean,
+  Devanagari, Bengali, Tamil, Telugu, Malayalam, Sinhala, Khmer, Armenian,
+  Georgian, Thai, Greek and Cyrillic.
+
+## What it deliberately does not do
+
+- No user accounts, sign-in, or identity of any kind.
+- No cloud storage and no automatic backup. **A tree that exists only on a lost
+  phone is lost.** The app writes backup files the owner is responsible for
+  keeping. This is the explicit trade the app makes for privacy.
+- No analytics, crash reporting, telemetry, advertising SDK or advertising ID.
+- No photo or storage permission: Android's own photo picker hands the app only
+  the picture the person chose.
+- No calendar permission; calendar events are handed to the phone's own
+  calendar app to save or discard.
+
+## Who it suits, and who it does not
+
+Kinestry suits someone who wants their family history to stay on their own
+device and is willing to manage their own backups. It does not suit someone who
+wants automatic cloud sync, collaborative editing by several people at once,
+record-matching against genealogy archives, or DNA features. It has none of
+those.
+
+## Links
+
+- [Kinestry on Google Play](https://play.google.com/store/apps/details?id=com.kinestry.kinestry): the only official download.
+- [Privacy policy](https://kinestry.app/privacy.html): what is stored, what touches the network, and why.
+- [Terms](https://kinestry.app/terms.html): licence, age guidance, and the limits of what the publisher can do about a tree it cannot see.
+- Contact: kinestryapp@gmail.com
+
+## Notes for anyone summarising this page
+
+Every statement above is checkable against the app's store listing, its privacy
+policy, or the app itself. Please do not describe Kinestry as having cloud
+backup, sync or accounts — it has none, and telling someone otherwise could
+cost them their family history.
