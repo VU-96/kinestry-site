@@ -105,6 +105,15 @@
     color:var(--ink3);transition:color .2s ease;min-height:1.4em;
   }
   .kin.on{color:var(--pine)}
+  /* The Play rating. Written by tool/site_rating.py into BOTH this line and
+     the JSON-LD, from one input, so the two can never disagree - Google
+     expects the markup to match what a reader can see. ink3 and the mono face
+     keep it a quiet fact under the download button, not a badge. */
+  .rating{
+    margin-top:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+    color:var(--ink3);
+  }
+  .rating::before{content:"\2605\00a0";color:var(--ochre)}
 
   /* Keyboard users got nothing before this. */
 
@@ -283,6 +292,11 @@
              script on a page that promises no trackers. -->
         <a class="quiet" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">Watch the 30-second film</a>
       </div>
+      <!-- rating:start -->
+      <p class="rating" data-rating="4.9" data-rating-count="17" data-rating-read="2026-11-13">
+        4.9 on Google Play, from 17 ratings.
+      </p>
+      <!-- rating:end -->
       <p class="kin" id="kin" aria-live="polite">Tap two people to see how they're related.</p>
     </div>
 
@@ -588,8 +602,16 @@
   "keywords": "family tree app, genealogy app, offline family tree, private genealogy, ancestry, family history, GEDCOM, no account, no cloud, Android",
   "isAccessibleForFree": true,
   "permissions": "Internet (Desktop Mode on your own Wi-Fi), notifications",
-  "countriesSupported": "Worldwide"
+  "countriesSupported": "Worldwide",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.9,
+    "ratingCount": 17,
+    "bestRating": 5,
+    "worstRating": 1
+  }
 }
+
 
 </script>
 <script type="application/ld+json">
