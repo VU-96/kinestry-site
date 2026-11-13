@@ -85,6 +85,28 @@
     color:var(--ink3);
   }
   .rating::before{content:"\2605\00a0";color:var(--ochre)}
+  #shots{padding:76px 0 24px}
+  #shots h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,38px);
+    margin:10px 0 36px;letter-spacing:-.01em;color:var(--ink)}
+  .shotrow{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .shotrow figure{margin:0}
+  .shotrow img{
+    width:100%;height:auto;display:block;border-radius:18px;
+    border:1px solid var(--hair);background:var(--card);
+    box-shadow:0 1px 2px rgba(var(--shadowbase),.05),0 18px 34px -22px rgba(var(--shadowbase),.45);
+  }
+  .shotrow figcaption{
+    margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink3);
+  }
+  @media (max-width:900px){
+    .shotrow{grid-template-columns:repeat(2,1fr);gap:20px}
+    #shots{padding:56px 0 16px}
+  }
+  @media (max-width:520px){
+    .shotrow{grid-template-columns:repeat(2,1fr);gap:14px}
+    .shotrow figcaption{font-size:10.5px;letter-spacing:.1em}
+  }
     .support{
     margin:8px 0 64px;padding:28px 30px;border:1px solid var(--hair);
     border-radius:14px;background:var(--card);max-width:62ch;
@@ -289,6 +311,35 @@
       <span class="stamp">Free · yours forever</span>
     </div>
   </div>
+
+  <section id="shots" aria-labelledby="shots-h">
+    <div class="wrap">
+      <div class="kicker">The app itself</div>
+      <h2 id="shots-h">Not a mock-up. The thing you get.</h2>
+      <div class="shotrow">
+        <figure>
+          <img src="shots/01-one-root.webp" width="720" height="1105" loading="lazy" decoding="async"
+               alt="Five generations, one screen">
+          <figcaption>The tree</figcaption>
+        </figure>
+        <figure>
+          <img src="shots/04-a-life.webp" width="720" height="1105" loading="lazy" decoding="async"
+               alt="Dates, places, notes, photographs">
+          <figcaption>A person</figcaption>
+        </figure>
+        <figure>
+          <img src="shots/03-at-a-glance.webp" width="720" height="1105" loading="lazy" decoding="async"
+               alt="Who is living, who is remembered">
+          <figcaption>At a glance</figcaption>
+        </figure>
+        <figure>
+          <img src="shots/05-up-to-a0.webp" width="720" height="1105" loading="lazy" decoding="async"
+               alt="A4 to A0, PDF or image">
+          <figcaption>On paper</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <section id="features">
     <div class="wrap">
