@@ -21,21 +21,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<!-- Self-hosted OFL fonts (Latin subset) — no third-party CDN requests. -->
-<!-- Preloaded, not merely linked: without this the browser must fetch and
-     parse fonts.css before it can discover the faces, which on a throttled
-     mobile connection is two round trips before a single glyph is asked
-     for. Measured with Lighthouse 2026-10-24. Only the two faces used
-     above the fold are preloaded; preloading all four would simply move
-     the contention earlier. -->
 <link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
 <style>
 
-  /* ── hero ── */
-  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:64px 80px}
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:64px 80px}
   .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
   h1{
     font-family:var(--serif);font-weight:500;font-size:clamp(44px,6.4vw,76px);
@@ -48,18 +40,13 @@
   .cta .quiet:hover{color:var(--pine)}
   .soon{font-family:var(--mono);font-size:12.5px;color:var(--ink3)}
   .soon a{color:var(--ochre);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--ochre) 40%, transparent)}
-  /* load reveal */
-  .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+    .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
   @keyframes rise{to{opacity:1;transform:none}}
   .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}.d5{animation-delay:.5s}
 
 
 
-  /* ── questions ──
-     <details> rather than a JS accordion: it opens with no script, it is
-     announced correctly by screen readers, and Ctrl+F finds the answer text
-     even while the panel is shut. */
-  .qa{border-top:1px solid var(--hair)}
+    .qa{border-top:1px solid var(--hair)}
   .qa details{border-bottom:1px solid var(--hair)}
   .qa summary{
     list-style:none; cursor:pointer; padding:22px 0;
@@ -73,17 +60,7 @@
   }
   .qa details[open] summary::after{transform:rotate(45deg)}
   .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
-  /* Someone who has told their operating system they do not want movement
-     was still getting the whole page: five cards rising in sequence, 520
-     units of branch drawing themselves, then a tree that sways for as long
-     as the tab is open and a dot that pulses forever. The one rule here
-     before this covered a plus sign rotating in the FAQ.
-
-     `animation:none` rather than a shortened duration, because `rise` and
-     `draw` start from opacity 0 and stroke-dashoffset 520 - a cancelled
-     animation must not leave the tree invisible, so the end state is
-     restated. The favicon animation checks the same query in site.js. */
-  @media (prefers-reduced-motion:reduce){
+    @media (prefers-reduced-motion:reduce){
     .qa summary::after{transition:none}
     .rise,.node,.sway{animation:none;opacity:1;transform:none}
     .vines path{animation:none;stroke-dashoffset:0}
@@ -91,34 +68,22 @@
     .node,.sw,.kin{transition:none}
   }
 
-  /* ── the hero tree is the demo ── */
-  .node{
+    .node{
     font:inherit;color:inherit;text-align:center;cursor:pointer;
     -webkit-tap-highlight-color:transparent;
   }
   .node[aria-pressed="true"]{border-color:var(--ochre);box-shadow:0 0 0 2px var(--ochre)}
-  /* In the hero column, not under the tree: pinned to the bottom of a 480px
-     illustration the answer fell below the fold, which is useless for the one
-     interaction on the page. */
-  .kin{
+    .kin{
     margin-top:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
     color:var(--ink3);transition:color .2s ease;min-height:1.4em;
   }
   .kin.on{color:var(--pine)}
-  /* The Play rating. Written by tool/site_rating.py into BOTH this line and
-     the JSON-LD, from one input, so the two can never disagree - Google
-     expects the markup to match what a reader can see. ink3 and the mono face
-     keep it a quiet fact under the download button, not a badge. */
-  .rating{
+    .rating{
     margin-top:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
     color:var(--ink3);
   }
   .rating::before{content:"\2605\00a0";color:var(--ochre)}
-  /* Support section. Written by tool/site_support.py; absent until a username
-     is set, because a money link that goes nowhere must never ship. Styled as
-     a quiet card, not a banner - it follows the maker note and should read as
-     the same voice continuing, not as an ask. */
-  .support{
+    .support{
     margin:8px 0 64px;padding:28px 30px;border:1px solid var(--hair);
     border-radius:14px;background:var(--card);max-width:62ch;
   }
@@ -129,10 +94,8 @@
   .support-costs li{margin-bottom:8px}
   @media (max-width:560px){ .support{padding:22px 20px} }
 
-  /* Keyboard users got nothing before this. */
-
-  /* ── the living tree ── */
-  .grove{position:relative;height:480px}
+  
+    .grove{position:relative;height:480px}
   .vines{position:absolute;inset:0;width:100%;height:100%}
   .vines path{
     fill:none;stroke:var(--pine);stroke-opacity:.45;stroke-width:1.6;
@@ -154,8 +117,7 @@
   .node .nm{display:block;font-family:var(--serif);font-weight:600;font-size:16.5px;line-height:1.2;color:var(--ink)}
   .node time{display:block;margin-top:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink3)}
   .sway{animation:rise .7s ease forwards, sway 7s ease-in-out 2s infinite}
-  /* hover lift would fight the sway keyframes, so lift the inner text instead */
-  .node:hover .nm{color:var(--pine)}
+    .node:hover .nm{color:var(--pine)}
   @keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   .n1{top:6px;left:8%;animation-delay:.55s, 2s}
   .n2{top:6px;right:8%;animation-delay:.68s, 2.6s}
@@ -164,14 +126,12 @@
   .n4{top:352px;left:13%;animation-delay:.96s, 3.5s}
   .n5{top:352px;right:13%;animation-delay:1.08s, 4s}
 
-  /* ── stamps strip ── */
-  .stamps{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:22px 0}
+    .stamps{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:22px 0}
   .stamps .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
   .stamp{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--pine);text-transform:uppercase}
   .stamp::before{content:"◆";color:var(--ochre);margin-right:10px;font-size:9px;vertical-align:2px}
 
-  /* maker's note — narrow on purpose, see the comment in the markup */
-  #maker{padding:0 0 96px}
+    #maker{padding:0 0 96px}
   .note{max-width:34rem;border-left:2px solid var(--ochre);padding-left:26px}
   .note p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink)}
   .note cite{
@@ -180,17 +140,14 @@
   }
   .note cite::before{content:"— "}
 
-  /* Two 96px paddings meeting between sections read as a dead gap. */
-  #privacy{padding-top:40px}
+    #privacy{padding-top:40px}
 
-  /* ── sections ── */
-  section{padding:96px 0}
+    section{padding:96px 0}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
   h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.12;margin:14px 0 10px;letter-spacing:-.01em}
   .sub{color:var(--ink2);max-width:54ch}
 
-  /* features as a register/table-of-contents */
-  .register{margin-top:46px;border-top:1px solid var(--hair)}
+    .register{margin-top:46px;border-top:1px solid var(--hair)}
   .entry{
     display:grid;grid-template-columns:.85fr 1.25fr;gap:40px;align-items:baseline;
     padding:30px 6px;border-bottom:1px solid var(--hair);transition:background .25s ease;
@@ -199,8 +156,7 @@
   .entry h3{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.005em}
   .entry p{color:var(--ink2);font-size:15.5px}
 
-  /* desktop mode browser */
-  .desk{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+    .desk{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
   .browser{
     background:var(--card);border:1px solid var(--hair);border-radius:18px;overflow:hidden;
     box-shadow:0 2px 4px rgba(var(--shadowbase),.06),0 34px 70px -38px rgba(var(--shadowbase),.5);
@@ -221,16 +177,14 @@
   .badge i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pine2);margin-right:8px;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-  /* promise */
-  .promise{background:var(--pine);color:var(--paper2);border-radius:26px;padding:74px 8%;text-align:center}
+    .promise{background:var(--pine);color:var(--paper2);border-radius:26px;padding:74px 8%;text-align:center}
   .promise .eyebrow{color:var(--onpine);opacity:.86}
   .promise h2{color:var(--onpine)}
   .promise p{color:color-mix(in srgb, var(--paper2) 78%, transparent);max-width:58ch;margin:8px auto 0}
 
 
 @media (max-width:560px){
-  /* See site.css: the desktop vertical rhythm leaves ~400px voids on a phone. */
-  section{padding:56px 0}
+    section{padding:56px 0}
   #maker{padding-bottom:44px}
   #privacy{padding-top:24px}
 }
@@ -302,24 +256,15 @@
       privately, forever on your device. No cloud. No account. No subscription.</p>
       <div class="cta rise d5">
         <a class="pill" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">Download on Google Play</a>
-        <!-- A link, never an embed: an embedded player would load a third-party
-             script on a page that promises no trackers. -->
-        <a class="quiet" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">Watch the 30-second film</a>
+                <a class="quiet" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">Watch the 30-second film</a>
       </div>
-      <!-- rating:start -->
-      <p class="rating" data-rating="4.9" data-rating-count="17" data-rating-read="2026-11-13">
+      <div data-slot="rating"><p class="rating" data-rating="4.9" data-rating-count="17" data-rating-read="2026-11-13">
         4.9 on Google Play, from 17 ratings.
-      </p>
-      <!-- rating:end -->
-      <p class="kin" id="kin" aria-live="polite">Tap two people to see how they're related.</p>
+      </p></div>
+            <p class="kin" id="kin" aria-live="polite">Tap two people to see how they're related.</p>
     </div>
 
-    <!-- The living tree, drawn rather than screenshotted. It used to be
-         aria-hidden as pure decoration; now that each person is a button that
-         answers "how are these two related?", hiding it would put focusable
-         controls inside an aria-hidden subtree — invalid, and it would strand
-         anyone using a screen reader on the one interactive thing here. -->
-    <div class="grove" role="group" aria-label="A sample family — choose two people to see how they are related">
+        <div class="grove" role="group" aria-label="A sample family — choose two people to see how they are related">
       <svg class="vines" viewBox="0 0 520 480" preserveAspectRatio="none">
         <path d="M132 96 C132 160 260 130 260 188"/>
         <path d="M388 96 C388 160 260 130 260 188"/>
@@ -445,8 +390,7 @@
           <span class="url">http://<b>kinestry.local</b>:8765</span>
         </div>
         <div class="screen">
-          <!-- The real thing: Desktop Mode live in a laptop browser. -->
-          <img src="desktop.png" alt="Kinestry's family tree canvas running live in a laptop browser via Desktop Mode"
+                    <img src="desktop.png" alt="Kinestry's family tree canvas running live in a laptop browser via Desktop Mode"
                width="2880" height="1434" loading="lazy">
           <span class="badge"><i></i>DESKTOP MODE IS ON</span>
         </div>
@@ -505,13 +449,7 @@
     </div>
   </section>
 
-  <!-- ── a person, not a brand ──────────────────────────────────────────────
-       Deliberately narrow and quiet: every other section on this page is a
-       1080px centred box with an eyebrow above a serif headline, and that
-       sameness is what made the site feel machine-made. This one breaks it.
-       REPLACE THE SENTENCE with your own — a real reason you built this will
-       carry more than anything written for you. -->
-  <section id="maker">
+    <section id="maker">
     <div class="wrap">
       <blockquote class="note">
         <p>Kinestry is made by one person, not a company. There are no investors
@@ -523,7 +461,7 @@
   </section>
 
   <div class="wrap">
-    <!-- support:start --><!-- support:end -->
+    <div data-slot="support"></div>
   </div>
 </main>
 
@@ -562,6 +500,7 @@
       <a href="print-family-tree.html">How to print a family tree</a>
       <a href="privacy.html">Privacy policy</a>
       <a href="terms.html">Terms of use</a>
+      <a href="fonts/OFL.txt">Typeface licences</a>
       <a href="mailto:kinestryapp@gmail.com">kinestryapp@gmail.com</a>
     </div>
   </div>
@@ -569,9 +508,6 @@
 
 
 <script src="site.js" defer></script>
-<!-- The app itself, for search engines. Deliberately carries NO aggregateRating
-     and NO softwareVersion: Play shows no public star rating for Kinestry yet,
-     and a version number here would go stale the day after every release. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
