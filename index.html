@@ -114,6 +114,20 @@
     color:var(--ink3);
   }
   .rating::before{content:"\2605\00a0";color:var(--ochre)}
+  /* Support section. Written by tool/site_support.py; absent until a username
+     is set, because a money link that goes nowhere must never ship. Styled as
+     a quiet card, not a banner - it follows the maker note and should read as
+     the same voice continuing, not as an ask. */
+  .support{
+    margin:8px 0 64px;padding:28px 30px;border:1px solid var(--hair);
+    border-radius:14px;background:var(--card);max-width:62ch;
+  }
+  .support h2{font-family:var(--serif);font-size:24px;margin:0 0 14px;color:var(--ink)}
+  .support p{color:var(--ink2);margin:0 0 12px}
+  .support strong{color:var(--ink)}
+  .support-costs{margin:16px 0 22px;padding-left:18px;color:var(--ink2)}
+  .support-costs li{margin-bottom:8px}
+  @media (max-width:560px){ .support{padding:22px 20px} }
 
   /* Keyboard users got nothing before this. */
 
@@ -506,6 +520,10 @@
       </blockquote>
     </div>
   </section>
+
+  <div class="wrap">
+    <!-- support:start --><!-- support:end -->
+  </div>
 </main>
 
 <footer>
