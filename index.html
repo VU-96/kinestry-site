@@ -30,7 +30,6 @@
 <style>
 
     .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:64px 80px}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
   h1{
     font-family:var(--serif);font-weight:500;font-size:clamp(44px,6.4vw,76px);
     line-height:1.04;letter-spacing:-.012em;margin:18px 0 22px;
@@ -40,7 +39,6 @@
   .cta{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
   .cta .quiet{color:var(--ink3);text-decoration:none;border-bottom:1px solid currentColor;font-size:15px;align-self:center}
   .cta .quiet:hover{color:var(--pine)}
-  .soon{font-family:var(--mono);font-size:12.5px;color:var(--ink3)}
   .soon a{color:var(--ochre);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--ochre) 40%, transparent)}
     .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
   @keyframes rise{to{opacity:1;transform:none}}
@@ -61,9 +59,21 @@
     line-height:1; transition:transform .2s ease;
   }
   .qa details[open] summary::after{transform:rotate(45deg)}
+  :root{interpolate-size:allow-keywords}
+  .qa details::details-content{
+    block-size:0;opacity:0;overflow:clip;
+    transition:block-size .44s cubic-bezier(.4,0,.2,1),
+               opacity .34s cubic-bezier(.4,0,.2,1),
+               content-visibility .44s allow-discrete;
+  }
+  .qa details[open]::details-content{block-size:auto;opacity:1}
+  .qa summary{transition:color .18s ease}
+  .qa summary:hover{color:var(--pine)}
+  .qa details[open] summary{color:var(--pine)}
   .qa p{color:var(--ink2); font-size:15.5px; margin:0 0 22px; max-width:62ch}
     @media (prefers-reduced-motion:reduce){
     .qa summary::after{transition:none}
+    .qa details::details-content{transition:none}
     .rise,.node,.sway{animation:none;opacity:1;transform:none}
     .vines path{animation:none;stroke-dashoffset:0}
     .badge i{animation:none}
@@ -76,14 +86,11 @@
   }
   .node[aria-pressed="true"]{border-color:var(--ochre);box-shadow:0 0 0 2px var(--ochre)}
     .kin{
-    margin-top:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+    margin-top:26px;font-family:var(--serif);font-style:italic;font-size:17px;
     color:var(--ink3);transition:color .2s ease;min-height:1.4em;
   }
   .kin.on{color:var(--pine)}
-    .rating{
-    margin-top:14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
-    color:var(--ink3);
-  }
+    .rating{margin-top:16px;font-size:15px;color:var(--ink3)}
   .rating::before{content:"\2605\00a0";color:var(--ochre)}
   nav a.coffee{color:var(--ochre)}
   nav a.coffee::before{content:"\2615\00a0\00a0";font-size:.95em}
@@ -93,7 +100,6 @@
     background:var(--pine);color:var(--onpine);
     padding:64px 0;margin:62px 0 0;
   }
-  #privacy .eyebrow{color:var(--ochre)}
   #privacy h2{color:var(--onpine)}
   #privacy p{color:var(--onpine);opacity:.82}
   #closer{padding:64px 0 76px;text-align:center}
@@ -104,8 +110,8 @@
   #closer p{color:var(--ink2);max-width:46ch;margin:0 auto 26px}
   #closer .pill{display:inline-block}
   #closer .after{
-    margin-top:18px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--ink3);
+    margin-top:18px;font-family:var(--serif);font-style:italic;
+    font-size:17px;color:var(--ink3);
   }
   .js-reveal .reveal{opacity:0;transform:translateY(18px);
     transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -125,8 +131,7 @@
     box-shadow:0 1px 2px rgba(var(--shadowbase),.05),0 18px 34px -22px rgba(var(--shadowbase),.45);
   }
   .shotrow figcaption{
-    margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--ink3);
+    margin-top:13px;font-family:var(--serif);font-size:16px;color:var(--ink2);
   }
   @media (max-width:900px){
     .shotrow{grid-template-columns:repeat(2,1fr);gap:20px}
@@ -134,25 +139,34 @@
   }
   @media (max-width:520px){
     .shotrow{grid-template-columns:repeat(2,1fr);gap:14px}
-    .shotrow figcaption{font-size:10.5px;letter-spacing:.1em}
+    .shotrow figcaption{font-size:14px}
   }
     #maker{padding-bottom:18px}
   #maker + .wrap .support{margin-top:0}
   #closer{padding-top:34px}
   .support{
-    margin:8px 0 64px;padding:36px 40px;border:1px solid var(--hair);
-    border-radius:14px;background:var(--card);
+    margin:8px 0 64px;padding-top:34px;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:.8fr 1.2fr;column-gap:56px;align-items:start;
   }
-  .support h2{margin:0 0 14px}
-  .support p{max-width:66ch;margin-bottom:12px}
-  .support .pill{display:inline-block;margin-top:10px}
-  @media (max-width:760px){ .support{padding:24px 22px} }
-  .support h2{font-family:var(--serif);font-size:24px;margin:0 0 14px;color:var(--ink)}
-  .support p{color:var(--ink2);margin:0 0 12px}
-  .support strong{color:var(--ink)}
-  .support-costs{margin:16px 0 22px;padding-left:18px;color:var(--ink2)}
-  .support-costs li{margin-bottom:8px}
-  @media (max-width:560px){ .support{padding:22px 20px} }
+  .support h2{
+    grid-column:1;grid-row:1;font-family:var(--serif);font-weight:500;
+    font-size:clamp(26px,3vw,36px);line-height:1.12;letter-spacing:-.01em;
+    margin:0;color:var(--ink);
+  }
+  .support p{grid-column:2;color:var(--ink2);margin:0 0 14px;max-width:56ch}
+  .support p:last-of-type{margin-bottom:0}
+  .support strong{color:var(--ink);font-weight:600}
+  .support .pill{
+    grid-column:1;grid-row:2;justify-self:start;align-self:start;
+    display:inline-block;margin-top:22px;
+  }
+  @media (max-width:860px){
+    .support{grid-template-columns:1fr;row-gap:18px}
+    .support h2,.support p,.support .pill{grid-column:1}
+    .support h2{grid-row:auto}
+    .support .pill{grid-row:auto;margin-top:4px}
+    .support p{max-width:none}
+  }
 
   
     .grove{position:relative;height:480px}
@@ -188,22 +202,21 @@
 
     .stamps{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:22px 0}
   .stamps .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-  .stamp{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--pine);text-transform:uppercase}
+  .stamp{font-family:var(--serif);font-size:17px;color:var(--pine)}
   .stamp::before{content:"◆";color:var(--ochre);margin-right:10px;font-size:9px;vertical-align:2px}
 
     #maker{padding:0 0 60px}
-  .note{max-width:34rem;border-left:2px solid var(--ochre);padding-left:26px}
+  .note{max-width:44rem;border-left:2px solid var(--ochre);padding-left:26px}
   .note p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink)}
   .note cite{
-    display:block;margin-top:16px;font-family:var(--mono);font-style:normal;
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);
+    display:block;margin-top:16px;font-family:var(--serif);font-style:italic;
+    font-size:17px;color:var(--ink3);
   }
   .note cite::before{content:"— "}
 
     #privacy{padding-top:40px}
 
     section{padding:62px 0}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
   h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.12;margin:14px 0 10px;letter-spacing:-.01em}
   .sub{color:var(--ink2);max-width:54ch}
 
@@ -242,7 +255,6 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
     .promise{padding:8px 8%;text-align:center}
-  .promise .eyebrow{color:var(--onpine);opacity:.86}
   .promise h2{color:var(--onpine)}
   .promise p{color:color-mix(in srgb, var(--paper2) 78%, transparent);max-width:58ch;margin:8px auto 0}
 
@@ -313,11 +325,10 @@
 <main id="content">
   <div class="wrap hero">
     <div>
-      <div class="kicker rise d2">A family tree · kept like an heirloom</div>
-      <h1 class="rise d3">Every family<br><em>is a story.</em></h1>
-      <p class="lede rise d4">Build a living tree of the people you love — and keep it,
+      <h1 class="rise d2">Every family<br><em>is a story.</em></h1>
+      <p class="lede rise d3">Build a living tree of the people you love — and keep it,
       privately, forever on your device. No cloud. No account. No subscription.</p>
-      <div class="cta rise d5">
+      <div class="cta rise d4">
         <a class="pill" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">Download on Google Play</a>
                 <a class="quiet" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">Watch the 30-second film</a>
       </div>
@@ -347,13 +358,12 @@
       <span class="stamp">No cloud</span>
       <span class="stamp">No account</span>
       <span class="stamp">No data collected</span>
-      <span class="stamp">Free · yours forever</span>
+      <span class="stamp">Free, forever</span>
     </div>
   </div>
 
-<section id="shots" class="reveal" aria-labelledby="shots-h">
+<section id="shots" aria-labelledby="shots-h">
     <div class="wrap">
-      <div class="kicker">The app itself</div>
       <h2 id="shots-h">Not a mock-up. The thing you get.</h2>
       <div class="shotrow">
         <figure>
@@ -380,10 +390,9 @@
     </div>
   </section>
 
-<section id="privacy" class="reveal">
+<section id="privacy">
     <div class="wrap">
       <div class="promise">
-        <div class="eyebrow">The promise</div>
         <h2>We couldn't read your tree<br>if we wanted to.</h2>
         <p>Kinestry has no servers, no accounts, no analytics and no trackers. Your
         family's names, dates and photos live in one place: your phone. The Play Store
@@ -392,9 +401,8 @@
     </div>
   </section>
 
-<section id="features" class="reveal">
+<section id="features">
     <div class="wrap">
-      <div class="eyebrow">The register</div>
       <h2>Made for real families,<br>not databases.</h2>
       <p class="sub">Kinestry is a focused tool with one hero: the tree. Everything in it
       exists to help you record, explore and pass on your family's story.</p>
@@ -457,10 +465,9 @@
     </div>
   </section>
 
-<section id="desktop" class="reveal">
+<section id="desktop">
     <div class="wrap desk">
       <div>
-        <div class="eyebrow">Desktop Mode</div>
         <h2>Your tree, on the big screen. Still no cloud.</h2>
         <p class="sub">Open Kinestry in your laptop's browser over your home Wi-Fi. Edit
         with mouse and keyboard, upload photos from your computer, watch changes appear
@@ -483,9 +490,8 @@
     </div>
   </section>
 
-<section id="questions" class="reveal">
+<section id="questions">
     <div class="wrap">
-      <div class="eyebrow">Questions</div>
       <h2>The things people<br>ask first.</h2>
 
       <div class="qa">
@@ -521,13 +527,13 @@
     </div>
   </section>
 
-<section id="maker" class="reveal">
+<section id="maker">
     <div class="wrap">
       <blockquote class="note">
         <p>Kinestry is made by one person, not a company. There are no investors
         to answer to and nothing to sell — which is the only reason an app like
         this can promise to stay free and stay off the cloud.</p>
-        <cite>Developer</cite>
+        <cite>Valeed Labs, which is one person</cite>
       </blockquote>
     </div>
   </section>
@@ -539,9 +545,9 @@
       <strong>nothing unlocks</strong> if you pay. It is made by one person
       and it stays that way.</p>
       <p>The costs behind it are small and real: Apple charges $99 a year
-      before an iPhone version can reach anyone, and the domain this page sits
-      on renews every year. A coffee goes towards those, and towards the time
-      that makes the next update.</p>
+      before an iPhone version can reach anyone, and the domain this page
+      sits on renews every year. A coffee goes towards those, and towards
+      the time that makes the next update.</p>
       <p>If you would rather not spend anything, that helps just as much —
       rate it on Google Play, or tell one person in your family about it. At
       this size that is worth more than money.</p>
@@ -549,12 +555,12 @@
     </section></div>
   </div>
 
-<section id="closer" class="reveal">
+<section id="closer">
     <div class="wrap">
       <h2>Start with one name.</h2>
       <p>Your own. The tree grows from there, and it never leaves your phone.</p>
       <a class="pill" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">Download on Google Play</a>
-      <p class="after">Free · No account · Android</p>
+      <p class="after">Free, and there is no account to make.</p>
     </div>
   </section>
 </main>
@@ -584,7 +590,7 @@
         </svg>
         <b style="font-size:19px">Kinestry</b>
       </a>
-      <small>© 2026 · Your data stays home.<br>Only available on Google Play —
+      <small>© 2026 Kinestry. Your data stays home.<br>Only available on Google Play —
       copies from anywhere else are not ours.</small>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">
         <img src="google-play-badge.png" alt="Get it on Google Play" width="646" height="250">
