@@ -210,14 +210,18 @@
   .marquee-toggle:hover{border-color:var(--pine)}
   .marquee{margin-top:52px;overflow:hidden;padding:10px 0 18px;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-  .marquee-track{display:flex;align-items:flex-start;width:max-content;animation:marquee var(--dur,70s) linear infinite}
-  .marquee-set{display:flex;align-items:flex-start;list-style:none;padding-right:24px}
+  .marquee-track{display:flex;align-items:stretch;width:max-content;animation:marquee var(--dur,70s) linear infinite}
+  .marquee-set{display:flex;align-items:stretch;list-style:none;padding-right:24px}
   .review{flex:0 0 440px;margin-right:24px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--hair2);
     border-radius:22px;padding:28px 30px 26px;box-shadow:0 1px 2px rgba(33,28,21,.04);
     transition:transform .35s var(--ease-out),border-color .3s ease,box-shadow .35s ease}
   .review:last-child{margin-right:0}
   .review .said{font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--ink);margin-top:14px}
-  .review .who{padding-top:20px;font-size:14.5px;color:var(--ink2)}
+  .review.r-xl{flex-basis:600px}.r-xl .said{font-size:18px;line-height:1.55}
+  .review.r-l{flex-basis:470px}.r-l .said{font-size:20px;line-height:1.5}
+  .review.r-m{flex-basis:400px}.r-m .said{font-size:23px;line-height:1.42}
+  .review.r-s{flex-basis:340px}.r-s .said{font-size:27px;line-height:1.32}
+  .review .who{margin-top:auto;padding-top:22px;font-size:14.5px;color:var(--ink2)}
   .review .who b{display:block;color:var(--ink);font-weight:600;font-size:16px}
   @keyframes marquee{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
   .marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.paused .marquee-track,.marquee.held .marquee-track{animation-play-state:paused}
@@ -373,8 +377,10 @@
     .trust ul{grid-gap:16px 12px;gap:16px 12px}
     .trust li{font-size:18px}
     .stars svg:nth-child(n+2){display:none}
-    .review{flex-basis:min(82vw,320px);padding:24px 22px 22px}
-    .review .said{font-size:17.5px}
+    .marquee-track,.marquee-set{align-items:center}
+    .review,.review.r-xl,.review.r-l,.review.r-m,.review.r-s{flex-basis:min(82vw,320px);padding:24px 22px 22px}
+    .review .said,.review .said[class]{font-size:17.5px;line-height:1.55}
+    .r-s .said,.r-m .said{font-size:21px}
     .marquee{margin-top:36px}
     .cta{flex-wrap:nowrap;margin:22px 0 0 -10px}
     .cta > a{margin:0 0 0 10px}
@@ -576,16 +582,16 @@
   <div class="marquee" id="reviews" data-a>
     <div class="marquee-track">
       <ul class="marquee-set" aria-label="Reviews of Kinestry on Google Play">
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
+        <li class="review r-xl"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
+        <li class="review r-m"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
+        <li class="review r-l"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
+        <li class="review r-s"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
       </ul>
       <ul class="marquee-set" aria-hidden="true">
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
-        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
+        <li class="review r-xl"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
+        <li class="review r-m"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
+        <li class="review r-l"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
+        <li class="review r-s"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
       </ul>
     </div>
   </div>
@@ -702,7 +708,7 @@
   <div class="container">
     <blockquote data-a>
       <p>Kinestry is made by one person, not a company. There are no investors to answer to and nothing to sell — which is the only reason an app like this can promise to stay free and stay off the cloud.</p>
-      <cite>Valeed Labs, which is one person</cite>
+      <cite>Valeed, who makes Kinestry</cite>
     </blockquote>
     <div data-slot="support"><aside class="coffee-card" id="support" aria-labelledby="support-h" data-a>
       <h3 id="support-h">Support Kinestry</h3>
