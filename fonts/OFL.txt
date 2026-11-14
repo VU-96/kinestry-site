@@ -3,11 +3,9 @@ License, Version 1.1. Bundling them makes this site a redistributor, so the
 copyright notices and license text ship here as the OFL requires.
 
 Newsreader — Copyright 2020 The Newsreader Project Authors
-  (https://github.com/productiontype/Newsreader)
-Hanken Grotesk — Copyright 2020 The Hanken Grotesk Project Authors
+  (http://github.com/productiontype/Newsreader)
+Hanken Grotesk — Copyright 2021 The Hanken Grotesk Project Authors
   (https://github.com/marcologous/hanken-grotesk)
-JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors
-  (https://github.com/JetBrains/JetBrainsMono)
 
 -----------------------------------------------------------
 SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
