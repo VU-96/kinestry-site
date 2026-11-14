@@ -132,3 +132,18 @@
     });
   }
 })();
+
+(function () {
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!items.length) return;
+  var reduce = window.matchMedia &&
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  items.forEach(function (el) { io.observe(el); });
+})();
