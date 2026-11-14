@@ -83,6 +83,20 @@
   .cta > a{margin:12px 0 0 18px}
   .cta .btn-primary{padding:16px 26px;font-size:17px}
   .l-short{display:none}
+  @media (max-width:900px){
+    .top-coffee header.top nav a.btn-primary{display:none}
+    .top-coffee header.top nav a.coffee{
+      display:inline-flex;margin-left:0;min-height:44px;padding:10px 18px;border-radius:999px;
+      background:var(--card);border:1px solid rgba(139,93,36,.35);font-size:15px;animation:navIn .35s var(--ease-out)
+    }
+    header.top nav a.btn-primary{animation:navIn .35s var(--ease-out)}
+  }
+  @media (max-width:360px){
+    .top-coffee header.top nav a.coffee{padding:8px 13px;font-size:14px}
+    header.top .brand b{font-size:21px}
+    header.top .brand svg{margin-right:8px}
+  }
+  @keyframes navIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
   .rating-row{display:flex;align-items:center;margin-top:26px}
   .stars{display:flex;color:var(--ochre);margin-right:10px;flex:none}
   .stars svg{width:15px;height:15px;margin-right:2px}
@@ -412,6 +426,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     .blob,.mark,.node .sway,.scroll-down svg,.badge i,.glow-wrap::before{animation:none!important}
+    header.top nav a{animation:none!important}
     .marquee-track{animation:none!important}
     .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scroll-snap-type:x mandatory}
     .marquee-set[aria-hidden="true"]{display:none}
@@ -967,6 +982,6 @@
 }
 </script>
 <script src="site.js?v=20261114"></script>
-<script src="home.js?v=20261114b"></script>
+<script src="home.js?v=20261114c"></script>
 </body>
 </html>

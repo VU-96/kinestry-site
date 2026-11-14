@@ -9,6 +9,20 @@
   function mq(q) { return !!(window.matchMedia && window.matchMedia(q).matches); }
 
 
+  var heroCta = document.querySelector('.hero .cta');
+  if (heroCta) {
+    var navTick = false;
+    var navSwap = function () {
+      navTick = false;
+      root.classList.toggle('top-coffee', heroCta.getBoundingClientRect().bottom > 76);
+    };
+    window.addEventListener('scroll', function () {
+      if (!navTick) { navTick = true; requestAnimationFrame(navSwap); }
+    }, { passive: true });
+    window.addEventListener('resize', navSwap);
+    navSwap();
+  }
+
   var faqs = $$('.qa details');
   var canAnimate = anim && typeof document.body.animate === 'function';
   faqs.forEach(function (d) {
