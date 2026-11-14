@@ -96,7 +96,6 @@
       toggle.addEventListener('click', function () {
         paused = !paused;
         toggle.textContent = paused ? 'Play' : 'Pause';
-        toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
         if (!paused) rest(0);
       });
     }
