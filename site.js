@@ -147,3 +147,17 @@
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
   items.forEach(function (el) { io.observe(el); });
 })();
+
+(function () {
+  var items = [].slice.call(document.querySelectorAll('details[name="faq"]'));
+  if (items.length < 2) return;
+  var native = 'name' in document.createElement('details');
+  if (native) return;
+  items.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      items.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+})();
+

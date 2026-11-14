@@ -45,7 +45,7 @@
     opacity:var(--grain-opacity); mix-blend-mode:var(--grain-blend);
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .47 0 0 0 0 .44 0 0 0 0 .40 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
     header.wrap{padding-block:44px 26px}
   .bar{display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}

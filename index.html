@@ -115,8 +115,9 @@
   }
   #shots{padding:54px 0 20px}
   #shots h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,38px);
-    margin:10px 0 36px;letter-spacing:-.01em;color:var(--ink)}
-  .shotrow{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+    margin:10px 0 34px;letter-spacing:-.01em;color:var(--ink)}
+  #shots .wrap{max-width:none;padding-inline:clamp(32px,5vw,96px)}
+  .shotrow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.2vw,34px)}
   .shotrow figure{margin:0}
   .shotrow img{
     width:100%;height:auto;display:block;border-radius:18px;
@@ -135,10 +136,17 @@
     .shotrow{grid-template-columns:repeat(2,1fr);gap:14px}
     .shotrow figcaption{font-size:10.5px;letter-spacing:.1em}
   }
-    .support{
-    margin:8px 0 64px;padding:28px 30px;border:1px solid var(--hair);
-    border-radius:14px;background:var(--card);max-width:62ch;
+    #maker{padding-bottom:18px}
+  #maker + .wrap .support{margin-top:0}
+  #closer{padding-top:34px}
+  .support{
+    margin:8px 0 64px;padding:36px 40px;border:1px solid var(--hair);
+    border-radius:14px;background:var(--card);
   }
+  .support h2{margin:0 0 14px}
+  .support p{max-width:66ch;margin-bottom:12px}
+  .support .pill{display:inline-block;margin-top:10px}
+  @media (max-width:760px){ .support{padding:24px 22px} }
   .support h2{font-family:var(--serif);font-size:24px;margin:0 0 14px;color:var(--ink)}
   .support p{color:var(--ink2);margin:0 0 12px}
   .support strong{color:var(--ink)}
@@ -334,7 +342,7 @@
     </div>
   </div>
 
-  <div class="stamps">
+<div class="stamps">
     <div class="wrap">
       <span class="stamp">No cloud</span>
       <span class="stamp">No account</span>
@@ -343,7 +351,7 @@
     </div>
   </div>
 
-  <section id="shots" class="reveal" aria-labelledby="shots-h">
+<section id="shots" class="reveal" aria-labelledby="shots-h">
     <div class="wrap">
       <div class="kicker">The app itself</div>
       <h2 id="shots-h">Not a mock-up. The thing you get.</h2>
@@ -372,7 +380,19 @@
     </div>
   </section>
 
-  <section id="features" class="reveal">
+<section id="privacy" class="reveal">
+    <div class="wrap">
+      <div class="promise">
+        <div class="eyebrow">The promise</div>
+        <h2>We couldn't read your tree<br>if we wanted to.</h2>
+        <p>Kinestry has no servers, no accounts, no analytics and no trackers. Your
+        family's names, dates and photos live in one place: your phone. The Play Store
+        listing says "No data collected" because there is nothing to collect it with.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="features" class="reveal">
     <div class="wrap">
       <div class="eyebrow">The register</div>
       <h2>Made for real families,<br>not databases.</h2>
@@ -406,18 +426,11 @@
         </div>
         <div class="entry">
           <h3>Put right a wrong link</h3>
-          <p>Tapped the wrong name? Hold the row and the link comes apart on its
-          own — nobody is deleted, so their dates, photo and notes survive exactly
-          as you typed them. Removing someone who has family below them asks first
-          and says how many people that is, and Undo brings every one of them
-          back.</p>
+          <p>Hold the row and the link comes apart on its own. Nobody is deleted, their dates and photos survive, and Undo brings back every person a removal touched.</p>
         </div>
         <div class="entry">
           <h3>Coming up</h3>
-          <p>Birthdays, anniversaries and days of remembrance, gathered in one place.
-          Turn on a reminder and it stays on your phone — no server ever learns whose
-          birthday it is. Add one to your calendar and the phone opens the calendar app
-          you already use, fields filled in, with nothing sent anywhere.</p>
+          <p>Birthdays, anniversaries and days of remembrance in one place. Reminders are built by your phone — no server ever learns whose birthday it is.</p>
         </div>
         <div class="entry">
           <h3>More than one family</h3>
@@ -427,23 +440,11 @@
         </div>
         <div class="entry">
           <h3>Names in your own script</h3>
-          <p>Twenty scripts, on screen <em>and</em> in printed exports: Arabic, Hebrew,
-          Devanagari, Bengali, Gujarati, Gurmukhi, Tamil, Telugu, Kannada, Malayalam,
-          Sinhala, Thai, Lao, Khmer, Burmese, Chinese, Korean, Armenian, Georgian and
-          Ethiopic, plus Cyrillic and Greek. Every one carries its own typeface inside
-          the app, so a PDF looks the way the tree does.</p>
+          <p>Twenty scripts, on screen <em>and</em> in printed exports — Arabic, Hebrew, Devanagari, Bengali, Tamil, Chinese, Korean and more. Every typeface ships inside the app, so a PDF looks the way the tree does.</p>
         </div>
         <div class="entry">
           <h3>Share the story</h3>
-          <p>Export a vector PDF and send it to whoever you like. They need no app to
-          open it, on a phone or on a laptop. There is a high-resolution image for the
-          family group chat too, and GEDCOM, the universal format, so you're never
-          locked in. Exports keep the card style you chose, so the photo you framed is
-          the photo that goes out. A few hundred people fit on a single page; a tree
-          wider than that exports a branch at a time, and the app says so before it
-          tries. It prints at A4, Letter, A3, A1 or A0 as well, if you want it on a
-          wall — <a href="print-family-tree.html">here is how to choose the
-          right size</a>.</p>
+          <p>Export a vector PDF anyone can open with no app, a high-resolution image for the group chat, or GEDCOM so you are never locked in. It prints at A4 up to A0 — <a href="print-family-tree.html">here is how to choose the size</a>.</p>
         </div>
         <div class="entry">
           <h3>Backups you own</h3>
@@ -456,7 +457,7 @@
     </div>
   </section>
 
-  <section id="desktop" class="reveal">
+<section id="desktop" class="reveal">
     <div class="wrap desk">
       <div>
         <div class="eyebrow">Desktop Mode</div>
@@ -482,50 +483,37 @@
     </div>
   </section>
 
-  <section id="privacy" class="reveal">
-    <div class="wrap">
-      <div class="promise">
-        <div class="eyebrow">The promise</div>
-        <h2>We couldn't read your tree<br>if we wanted to.</h2>
-        <p>Kinestry has no servers, no accounts, no analytics and no trackers. Your
-        family's names, dates and photos live in one place: your phone. The Play Store
-        listing says "No data collected" because there is nothing to collect it with.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="questions" class="reveal">
+<section id="questions" class="reveal">
     <div class="wrap">
       <div class="eyebrow">Questions</div>
       <h2>The things people<br>ask first.</h2>
 
       <div class="qa">
-        <details>
+        <details name="faq">
           <summary>Does anything I type leave my phone?</summary>
           <p>No. Kinestry has no servers, no accounts, no analytics and no trackers, so there is nowhere for it to go. Names, dates and photos are written to a database on your own device and stay there.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>What happens if I lose my phone?</summary>
           <p>There is no cloud copy — that is the trade the app makes for privacy, and it is a real one. Kinestry writes a backup file you keep yourself, so make one and put it somewhere safe. A tree that exists only on a lost phone is gone.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>I linked the wrong people. Can I undo it?</summary>
           <p>Yes, and without deleting anyone. Hold the row in someone's immediate family and Kinestry offers to disconnect that one link, telling you exactly who stops being linked to whom before it happens. The people stay, with their dates, photos and notes untouched, and an Undo button puts the link back if you change your mind.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>Does it cost anything?</summary>
           <p>No. Kinestry is free. There are no purchases inside it, no subscription and no adverts.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>Is there an iPhone version?</summary>
           <p>Not at the moment. Kinestry is an Android app, available only on Google Play — a copy from anywhere else is not ours.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>Can I work on my tree on a computer?</summary>
           <p>Yes. Desktop Mode serves your tree to a browser on the same Wi‑Fi, so you can edit on a big screen with a keyboard. The connection is between your phone and your own computer; nothing travels over the internet.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>Will it handle names in my own script?</summary>
           <p>Yes, and in print as well as on screen. Kinestry carries its own typefaces for Arabic, Hebrew, Devanagari (Hindi and Marathi), Bengali, Gujarati, Gurmukhi, Tamil, Telugu, Kannada, Malayalam, Sinhala, Thai, Lao, Khmer, Burmese, Chinese, Korean, Armenian, Georgian and Ethiopic, as well as Cyrillic and Greek. They ship inside the app rather than being fetched, so a name looks the same on the printed PDF as it does on the phone.</p>
         </details>
@@ -533,7 +521,7 @@
     </div>
   </section>
 
-    <section id="maker" class="reveal">
+<section id="maker" class="reveal">
     <div class="wrap">
       <blockquote class="note">
         <p>Kinestry is made by one person, not a company. There are no investors
@@ -544,21 +532,24 @@
     </div>
   </section>
 
-  <div class="wrap">
+<div class="wrap">
     <div data-slot="support"><section class="support" id="support" aria-labelledby="support-h">
-      <h2 id="support-h">If Kinestry has been useful</h2>
-      <p>It is free, there are no adverts, and nothing in it is held back.
-      That is not changing.</p>
-      <p>If it has helped you keep your family's story somewhere safe, you
-      can buy me a coffee. It goes towards an iPhone version and the next
-      update.</p>
-      <p><strong>Nothing unlocks.</strong> You will never be asked inside the
-      app.</p>
+      <h2 id="support-h">Support Kinestry</h2>
+      <p>Kinestry is free, has no adverts and no subscription, and
+      <strong>nothing unlocks</strong> if you pay. It is made by one person
+      and it stays that way.</p>
+      <p>The costs behind it are small and real: Apple charges $99 a year
+      before an iPhone version can reach anyone, and the domain this page sits
+      on renews every year. A coffee goes towards those, and towards the time
+      that makes the next update.</p>
+      <p>If you would rather not spend anything, that helps just as much —
+      rate it on Google Play, or tell one person in your family about it. At
+      this size that is worth more than money.</p>
       <a class="pill" href="https://www.buymeacoffee.com/kinestry" rel="noopener">Buy me a coffee</a>
     </section></div>
   </div>
 
-  <section id="closer" class="reveal">
+<section id="closer" class="reveal">
     <div class="wrap">
       <h2>Start with one name.</h2>
       <p>Your own. The tree grows from there, and it never leaves your phone.</p>
