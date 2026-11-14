@@ -1,29 +1,8 @@
 (function () {
   'use strict';
 
-  var KEY = 'kinestry-palette';
-  var PAPER = { heirloom:'#ECE4D5', dusk:'#231F1A', archive:'#E9E7E2', nocturne:'#1A1D23' };
-  var root = document.documentElement;
-  var swatches = [].slice.call(document.querySelectorAll('.sw'));
-  var themeMeta = document.querySelector('meta[name="theme-color"]');
-
-  function apply(name, persist) {
-    if (name) { root.setAttribute('data-palette', name); }
-    else { root.removeAttribute('data-palette'); }
-    swatches.forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.palette === name));
-    });
-    if (themeMeta && PAPER[name]) { themeMeta.setAttribute('content', PAPER[name]); }
-    if (persist) { try { localStorage.setItem(KEY, name); } catch (e) {} }
-  }
-
-  var saved = null;
-  try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved && PAPER[saved]) { apply(saved, false); }
-
-  swatches.forEach(function (b) {
-    b.addEventListener('click', function () { apply(b.dataset.palette, true); });
-  });
+  try { localStorage.removeItem('kinestry-palette'); } catch (e) {}
+  document.documentElement.removeAttribute('data-palette');
 
   var NAME = { ibrahim:'Ibrahim', fatima:'Fatima', nadia:'Nadia', khalid:'Khalid', dina:'Dina' };
   var REL = {
@@ -161,3 +140,65 @@
   });
 })();
 
+
+(function () {
+  var grove = document.querySelector('.grove');
+  if (!grove) return;
+  if (window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+
+  var DEPTH = { n1: 4, n2: 4, n3: 9, n4: 15, n5: 15 };
+  var nodes = [].slice.call(grove.querySelectorAll('.node'));
+  var vines = grove.querySelector('.vines');
+  var tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+
+  function frame() {
+    cx += (tx - cx) * 0.085;
+    cy += (ty - cy) * 0.085;
+    nodes.forEach(function (el) {
+      var d = 0;
+      for (var k in DEPTH) { if (el.classList.contains(k)) d = DEPTH[k]; }
+      el.style.setProperty('--px', (cx * d).toFixed(2) + 'px');
+      el.style.setProperty('--py', (cy * d * 0.5).toFixed(2) + 'px');
+    });
+    if (vines) {
+      vines.style.transform = 'translate(' + (cx * 7).toFixed(2) + 'px,' +
+                              (cy * 3.5).toFixed(2) + 'px)';
+    }
+    if (Math.abs(tx - cx) > 0.01 || Math.abs(ty - cy) > 0.01) {
+      requestAnimationFrame(frame);
+    } else { running = false; }
+  }
+  function start() { if (!running) { running = true; requestAnimationFrame(frame); } }
+
+  window.addEventListener('pointermove', function (e) {
+    var r = grove.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    tx = (e.clientX / window.innerWidth - 0.5) * 2;
+    ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    start();
+  }, { passive: true });
+
+  window.addEventListener('blur', function () { tx = 0; ty = 0; start(); });
+  grove.addEventListener('pointerleave', function () { tx = 0; ty = 0; start(); });
+})();
+
+(function () {
+  var figs = [].slice.call(document.querySelectorAll('.shotrow figure'));
+  if (!figs.length) return;
+  var reduce = window.matchMedia &&
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-deal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      figs.forEach(function (f, i) {
+        setTimeout(function () { f.classList.add('dealt'); }, i * 110);
+      });
+      io.disconnect();
+    });
+  }, { rootMargin: '0px 0px -14% 0px', threshold: 0.15 });
+  io.observe(figs[0].parentNode);
+})();
