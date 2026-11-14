@@ -82,6 +82,7 @@
   .cta{display:flex;flex-wrap:wrap;align-items:center;margin:18px 0 0 -18px}
   .cta > a{margin:12px 0 0 18px}
   .cta .btn-primary{padding:16px 26px;font-size:17px}
+  .l-short{display:none}
   .rating-row{display:flex;align-items:center;margin-top:26px}
   .stars{display:flex;color:var(--ochre);margin-right:10px;flex:none}
   .stars svg{width:15px;height:15px;margin-right:2px}
@@ -188,13 +189,27 @@
   .also h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:0}
   .also p{color:var(--ink2);font-size:15px;margin-top:4px;line-height:1.55}
 
-  .voices .quotes{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-gap:40px;gap:40px;margin-top:56px;align-items:start}
-  .quote blockquote{position:relative;padding-top:46px}
-  .quote blockquote::before{content:"\201C";position:absolute;top:-6px;left:-4px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--ochre)}
-  .quote blockquote p{font-family:var(--serif);font-size:clamp(21px,1.9vw,25px);line-height:1.38;color:var(--ink);letter-spacing:-.008em}
-  .quote.q1 blockquote p{font-size:clamp(24px,2.5vw,32px);line-height:1.3}
-  .quote figcaption{margin-top:20px;font-size:15px;color:var(--ink2)}
-  .quote figcaption b{display:block;color:var(--ink);font-weight:600;font-size:16px;margin-bottom:2px}
+  .voices-head{display:flex;align-items:flex-end;justify-content:space-between}
+  .marquee-toggle{display:none;align-items:center;font:inherit;font-size:15px;font-weight:600;color:var(--pine);background:transparent;
+    border:1px solid var(--hair);border-radius:999px;padding:9px 18px;min-height:44px;cursor:pointer;margin-left:20px;flex:none}
+  .anim .marquee-toggle{display:inline-flex}
+  .marquee-toggle:hover{border-color:var(--pine)}
+  .marquee{margin-top:52px;overflow:hidden;padding:10px 0 18px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  .marquee-track{display:flex;align-items:flex-start;width:max-content;animation:marquee var(--dur,70s) linear infinite}
+  .marquee-set{display:flex;align-items:flex-start;list-style:none;padding-right:24px}
+  .review{flex:0 0 440px;margin-right:24px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--hair2);
+    border-radius:22px;padding:28px 30px 26px;box-shadow:0 1px 2px rgba(33,28,21,.04);
+    transition:transform .35s var(--ease-out),border-color .3s ease,box-shadow .35s ease}
+  .review:last-child{margin-right:0}
+  .review .said{font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--ink);margin-top:14px}
+  .review .who{padding-top:20px;font-size:14.5px;color:var(--ink2)}
+  .review .who b{display:block;color:var(--ink);font-weight:600;font-size:16px}
+  @keyframes marquee{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
+  .marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.paused .marquee-track,.marquee.held .marquee-track{animation-play-state:paused}
+  @media (hover:hover) and (pointer:fine){
+    .review:hover{transform:translateY(-6px);border-color:rgba(169,113,44,.6);box-shadow:0 26px 50px -30px rgba(33,28,21,.45)}
+  }
   .stars-s{display:block;width:80px;height:14px;margin-bottom:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A9712C' d='m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") 0 0/16px 14px repeat-x}
   #desktop{background:var(--paper2);overflow:hidden}
   .desk{display:grid;grid-template-columns:.85fr 1.15fr;grid-gap:64px;gap:64px;align-items:center}
@@ -316,8 +331,6 @@
     .bento{grid-template-columns:1fr 1fr}
     .feature-card{grid-column:span 1}
     .b-kin,.b-also{grid-column:span 2}
-    .voices .quotes{grid-template-columns:1fr 1fr}
-    .quote.q1{grid-column:span 2}
     .hero-grid{display:flex;flex-direction:column;align-items:stretch;grid-gap:0;gap:0}
     .hero-copy{display:contents}
     .hero .eyebrow{order:1;align-self:flex-start}
@@ -346,6 +359,17 @@
     .trust ul{grid-gap:16px 12px;gap:16px 12px}
     .trust li{font-size:18px}
     .stars svg:nth-child(n+2){display:none}
+    .review{flex-basis:min(82vw,320px);padding:24px 22px 22px}
+    .review .said{font-size:17.5px}
+    .marquee{margin-top:36px}
+    .cta{flex-wrap:nowrap;margin:22px 0 0 -10px}
+    .cta > a{margin:0 0 0 10px}
+    .cta .l-full{display:none}
+    .cta .l-short{display:inline}
+    .cta .btn-primary{padding:12px 18px;font-size:15px;min-height:46px;white-space:nowrap}
+    .cta .btn-primary svg{width:16px;height:16px;margin-right:8px}
+    .cta .btn-ghost{font-size:15px;padding:0 4px;min-height:46px;white-space:nowrap}
+    .cta .btn-ghost .play{width:34px;height:34px;margin-right:8px}
     .bento{grid-template-columns:1fr;grid-gap:16px;gap:16px}
     .feature-card,.b-kin,.b-also{grid-column:auto}
     .feature-card{padding:28px 24px}
@@ -353,8 +377,6 @@
     .kin-path .chip{font-size:15px;padding:6px 11px}
     .kin-path .step{margin:0 6px}
     .also{grid-template-columns:1fr}
-    .voices .quotes{grid-template-columns:1fr;grid-gap:40px;gap:40px}
-    .quote.q1{grid-column:auto}
     .hero{padding-top:92px}
     .grove{height:400px;margin-top:22px}
     .vines-d{display:none}
@@ -390,6 +412,11 @@
   }
   @media (prefers-reduced-motion:reduce){
     .blob,.mark,.node .sway,.scroll-down svg,.badge i,.glow-wrap::before{animation:none!important}
+    .marquee-track{animation:none!important}
+    .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scroll-snap-type:x mandatory}
+    .marquee-set[aria-hidden="true"]{display:none}
+    .review{scroll-snap-align:start}
+    .marquee-toggle{display:none!important}
   }
   @media print{
     header.top,.hero-shapes-back,.hero-shapes-mid,.scroll-down,.glow-wrap::before{display:none}
@@ -448,11 +475,11 @@
       <div class="cta" data-a>
         <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.2 2.6 13.6 12l-9.4 9.4a1.6 1.6 0 0 1-.7-1.3V3.9c0-.5.3-1 .7-1.3Zm10.7 10.7 2.4 2.4-10.8 6.2 8.4-8.6Zm3.7-3.7 2.9 1.7c.9.5.9 1.8 0 2.3l-2.9 1.7-2.6-2.6 2.6-3.1ZM6.5 2.1l10.8 6.2-2.4 2.4-8.4-8.6Z"/></svg>
-          Download on Google Play
+          <span class="l-full">Download on Google Play</span><span class="l-short">Download</span>
         </a>
         <a class="btn-ghost" href="https://youtu.be/6aXaBgpz9LA" rel="noopener">
           <span class="play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
-          Watch the 30-second film
+          <span class="l-full">Watch the 30-second film</span><span class="l-short">Watch the film</span>
         </a>
       </div>
       <div class="rating-row" data-a>
@@ -527,21 +554,24 @@
 </section>
 
 <section class="voices" aria-labelledby="voices-h">
-  <div class="container">
+  <div class="container voices-head">
     <h2 id="voices-h" data-a>In their own words.</h2>
-    <div class="quotes">
-      <figure class="quote q1" data-a>
-        <blockquote><p>Kinestry is honestly one of the best family tree apps I’ve used. … It’s simple, clean, and easy to use.</p></blockquote>
-        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Isagani</b>Google Play review, August 2026</figcaption>
-      </figure>
-      <figure class="quote" data-a>
-        <blockquote><p>A brilliantly designed app. A must have.</p></blockquote>
-        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Usman</b>Google Play review, October 2026</figcaption>
-      </figure>
-      <figure class="quote" data-a>
-        <blockquote><p>exactly what i was looking for no ads, no claud, having it forever.</p></blockquote>
-        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Collins</b>Google Play review, October 2026</figcaption>
-      </figure>
+    <button type="button" class="marquee-toggle" aria-pressed="false" aria-controls="reviews">Pause</button>
+  </div>
+  <div class="marquee" id="reviews" data-a>
+    <div class="marquee-track">
+      <ul class="marquee-set" aria-label="Reviews of Kinestry on Google Play">
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
+      </ul>
+      <ul class="marquee-set" aria-hidden="true">
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.</p><p class="who"><b>Isagani</b>Google Play review, August 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it</p><p class="who"><b>Collins</b>Google Play review, October 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.</p><p class="who"><b>Usman</b>Google Play review, October 2026</p></li>
+        <li class="review"><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><p class="said">Finally something worth while, thank you for making this.</p><p class="who"><b>Nica</b>Google Play review, October 2026</p></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -791,10 +821,86 @@
     "ratingCount": 17,
     "bestRating": 5,
     "worstRating": 1
-  }
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Isagani"
+      },
+      "datePublished": "2026-08-13",
+      "reviewBody": "I rarely write reviews for apps, but this one really deserves it! Kinestry is honestly one of the best family tree apps I’ve used. Since we’re a big family, it’s incredibly useful for keeping track of everyone and seeing how we’re connected across generations. It’s simple, clean, and easy to use. I absolutely love it! Thank you to the developers for creating such a wonderful and meaningful app.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Google Play"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Collins"
+      },
+      "datePublished": "2026-10-10",
+      "reviewBody": "exactly what i was looking for no ads, no claud, having it forever. boy oh boy the app is also clean and sleak, i love it",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Google Play"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Usman"
+      },
+      "datePublished": "2026-10-22",
+      "reviewBody": "A brilliantly designed app. A must have. It's important to keep track of our ancestors and loved ones so that they are not forgotten and stay within our prayers by name. Give it a try it's easy to manage. Designed very well.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Google Play"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Nica"
+      },
+      "datePublished": "2026-10-03",
+      "reviewBody": "Finally something worth while, thank you for making this.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Google Play"
+      }
+    }
+  ]
 }
-
-
 </script>
 <script type="application/ld+json">
 {
@@ -861,6 +967,6 @@
 }
 </script>
 <script src="site.js?v=20261114"></script>
-<script src="home.js?v=20261114"></script>
+<script src="home.js?v=20261114b"></script>
 </body>
 </html>
