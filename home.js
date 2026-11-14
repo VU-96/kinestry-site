@@ -87,32 +87,11 @@
       if (el.classList.contains('feature-card')) {
         window.setTimeout(function () { el.classList.add('settled'); el.style.removeProperty('--d'); }, 900 + i * step);
       }
-      if (el.querySelector && el.querySelector('.num[data-count]')) countUp(el.querySelector('.num[data-count]'));
     });
   }, { rootMargin: '0px 0px -14% 0px', threshold: 0.01 });
 
   $$('[data-a]').forEach(function (el) { if (!hero.contains(el)) io.observe(el); });
   $$('.phone, .feature-card').forEach(function (el) { io.observe(el); });
-
-  $$('.num[data-count]').forEach(function (el) {
-    el.textContent = '0' + (el.getAttribute('data-suffix') || '');
-  });
-  function countUp(el) {
-    if (el._counted) return;
-    el._counted = true;
-    var end = parseFloat(el.getAttribute('data-count'));
-    var dec = Number(el.getAttribute('data-dec') || 0);
-    var suf = el.getAttribute('data-suffix') || '';
-    var t0 = null, dur = 1600;
-    function f(t) {
-      if (t0 === null) t0 = t;
-      var p = clamp((t - t0) / dur);
-      var e = 1 - (1 - p) * (1 - p);
-      el.textContent = (end * e).toFixed(dec) + suf;
-      if (p < 1) requestAnimationFrame(f);
-    }
-    requestAnimationFrame(f);
-  }
 
   var fine = mq('(hover: hover) and (pointer: fine)');
   var layers = [
