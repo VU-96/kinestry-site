@@ -92,6 +92,7 @@
   .grove{position:relative;width:100%;max-width:540px;height:480px;margin-left:auto;z-index:2}
   .gen,.vines{position:absolute;top:0;left:0;width:100%;height:100%}
   .vines{overflow:visible}
+  .vines-m{display:none}
   .vines path{fill:none;stroke:var(--pine);stroke-opacity:.45;stroke-width:1.6}
   .node{
     position:absolute;width:158px;background:var(--card);border:1px solid var(--hair);border-radius:18px;
@@ -153,22 +154,48 @@
     color:var(--ochre-on-pine);border:1px solid rgba(217,168,98,.4);
   }
   .features .head{max-width:760px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:22px;gap:22px;margin-top:64px;-webkit-perspective:1200px;perspective:1200px}
+  .voices{padding-bottom:40px}
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-gap:20px;gap:20px;margin-top:64px;-webkit-perspective:1200px;perspective:1200px}
   .feature-card{
-    background:var(--card);border:1px solid var(--hair2);border-radius:22px;padding:34px 30px 32px;
-    transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
-    box-shadow:0 1px 2px rgba(33,28,21,.04);transform-origin:50% 100%;
+    position:relative;overflow:hidden;background:var(--card);border:1px solid var(--hair2);border-radius:24px;padding:34px 32px 32px;
+    transition:border-color .3s ease;box-shadow:0 1px 2px rgba(33,28,21,.04);transform-origin:50% 100%;grid-column:span 2;
   }
-  .feature-card:hover{transform:translateY(-6px);border-color:var(--ochre);box-shadow:0 30px 50px -34px rgba(33,28,21,.5)}
-  .feature-card .ic{width:52px;height:52px;border-radius:15px;background:var(--paper);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
-  .feature-card svg{width:28px;height:28px;stroke:var(--pine);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .feature-card h3{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.01em}
-  .feature-card p{color:var(--ink2);font-size:16px;margin-top:10px}
-  .feature-card p a{color:var(--pine);text-underline-offset:3px}
-  .also{display:grid;grid-template-columns:repeat(4,1fr);grid-column-gap:30px;column-gap:30px;margin-top:56px;border-top:1px solid var(--hair)}
-  .also div{padding:24px 0 0}
-  .also h3{font-family:var(--serif);font-weight:600;font-size:19px}
-  .also p{color:var(--ink2);font-size:15px;margin-top:6px;line-height:1.55}
+  .feature-card:hover{border-color:rgba(169,113,44,.55)}
+  .feature-card h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.1vw,30px);line-height:1.12;letter-spacing:-.014em;color:var(--ink)}
+  .feature-card p{color:var(--ink2);font-size:16.5px;margin-top:12px;max-width:42ch}
+  .feature-card p a{color:var(--pine);text-underline-offset:3px;padding:2px 0}
+  .b-kin{grid-column:span 4;display:grid;grid-template-columns:1fr 1fr;grid-gap:30px;gap:30px;align-items:center}
+  .b-kin > *{min-width:0}
+  .kin-demo{background:var(--paper);border:1px solid var(--hair2);border-radius:18px;padding:26px 22px 22px}
+  .kin-path{display:flex;align-items:center;justify-content:space-between}
+  .kin-path .chip{flex:none;font-family:var(--serif);font-weight:600;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:7px 14px}
+  .kin-path .chip.end{border-color:var(--ochre);box-shadow:0 0 0 2px var(--ochre)}
+  .kin-path .step{flex:1;min-width:16px;height:2px;margin:0 8px;background:rgba(44,64,52,.16);position:relative;overflow:hidden;border-radius:2px}
+  .kin-path .step::after{content:"";position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--pine);transform-origin:0 50%}
+  .kin-say{margin-top:18px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--pine)}
+  .b-script{grid-column:span 2;background:var(--pine);border-color:var(--pine)}
+  .b-script h3{color:var(--cream)}
+  .b-script p{color:#CFC9BC}
+  .scripts{list-style:none;margin-top:22px;display:flex;flex-wrap:wrap;align-items:baseline}
+  .scripts li{font-size:27px;line-height:1.3;color:var(--cream);margin:0 18px 6px 0}
+  .scripts li:nth-child(even){color:var(--ochre-on-pine)}
+  .sizes{display:block;width:100%;max-width:230px;height:auto;margin-top:24px;overflow:visible}
+  .sizes rect{fill:none;stroke:var(--pine);stroke-width:1.2}
+  .sizes rect.a0{fill:rgba(44,64,52,.05)}
+  .sizes text{font-family:var(--sans);font-size:11px;font-weight:600;fill:var(--ink2);text-anchor:middle}
+  .b-also{grid-column:span 4;background:transparent;border-style:dashed;border-color:var(--hair)}
+  .also{display:grid;grid-template-columns:1fr 1fr;grid-gap:22px 34px;gap:22px 34px}
+  .also h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:0}
+  .also p{color:var(--ink2);font-size:15px;margin-top:4px;line-height:1.55}
+
+  .voices .quotes{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-gap:40px;gap:40px;margin-top:56px;align-items:start}
+  .quote blockquote{position:relative;padding-top:46px}
+  .quote blockquote::before{content:"\201C";position:absolute;top:-6px;left:-4px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--ochre)}
+  .quote blockquote p{font-family:var(--serif);font-size:clamp(21px,1.9vw,25px);line-height:1.38;color:var(--ink);letter-spacing:-.008em}
+  .quote.q1 blockquote p{font-size:clamp(24px,2.5vw,32px);line-height:1.3}
+  .quote figcaption{margin-top:20px;font-size:15px;color:var(--ink2)}
+  .quote figcaption b{display:block;color:var(--ink);font-weight:600;font-size:16px;margin-bottom:2px}
+  .stars-s{display:block;width:80px;height:14px;margin-bottom:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A9712C' d='m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") 0 0/16px 14px repeat-x}
   #desktop{background:var(--paper2);overflow:hidden}
   .desk{display:grid;grid-template-columns:.85fr 1.15fr;grid-gap:64px;gap:64px;align-items:center}
   .desk h2{font-size:clamp(34px,3.7vw,50px)}
@@ -192,29 +219,33 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
   .faq-wrap{display:grid;grid-template-columns:.8fr 1.2fr;grid-gap:64px;gap:64px;align-items:start}
   .faq-wrap .lead{max-width:30ch}
-  .qa details{border-bottom:1px solid var(--hair)}
-  .qa details:first-child{border-top:1px solid var(--hair)}
+  .qa{position:relative;padding-left:52px}
+  .qa::before{content:"";position:absolute;left:16px;top:36px;bottom:36px;width:1.5px;background:rgba(44,64,52,.22)}
   .qa summary{
-    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
-    padding:24px 0;font-family:var(--serif);font-weight:600;font-size:21px;color:var(--ink);
+    list-style:none;cursor:pointer;display:block;position:relative;
+    padding:20px 0;font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.25;letter-spacing:-.008em;color:var(--ink);
+    transition:color .2s ease;
   }
+  .qa summary:hover{color:var(--pine)}
   .qa summary::-webkit-details-marker{display:none}
   .qa summary::marker{content:""}
   .qa .pm{
-    width:34px;height:34px;margin-left:20px;flex:none;border-radius:50%;border:1px solid var(--hair);position:relative;
-    transition:background-color .3s ease,border-color .3s ease,transform .45s var(--ease-out);
+    position:absolute;left:-46px;top:23px;width:22px;height:22px;border-radius:50%;
+    border:1.5px solid rgba(44,64,52,.45);background:var(--paper);
+    transition:background-color .3s ease,border-color .3s ease,transform .35s var(--ease-back);
   }
-  .qa .pm::before,.qa .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.6px;background:var(--ink);margin:-.8px 0 0 -6px}
-  .qa .pm::after{transform:rotate(90deg)}
-  .qa details[open] .pm{transform:rotate(45deg);background-color:var(--pine);border-color:var(--pine)}
-  .qa details[open] .pm::before,.qa details[open] .pm::after{background:var(--cream)}
+  .qa .pm::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--ochre-on-pine);transform:scale(0);transition:transform .3s var(--ease-back)}
+  .qa summary:hover .pm{border-color:var(--pine)}
+  .qa details[open] .pm{background-color:var(--pine);border-color:var(--pine);transform:scale(1.12)}
+  .qa details[open] .pm::after{transform:scale(1)}
+  .qa details[open] summary{color:var(--pine)}
   .qa .ans{overflow:hidden}
-  .qa .ans p{color:var(--ink2);font-size:17px;padding:0 50px 26px 0}
+  .qa .ans p{color:var(--ink2);font-size:17.5px;line-height:1.65;padding:0 0 24px 0;max-width:60ch}
   .maker{padding-top:40px}
   .maker .container{display:grid;grid-template-columns:1.1fr .9fr;grid-gap:64px;gap:64px;align-items:center}
-  blockquote{border-left:2px solid var(--ochre);padding-left:30px}
-  blockquote p{font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);line-height:1.35;color:var(--ink);letter-spacing:-.01em}
-  blockquote cite{display:block;margin-top:18px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink3)}
+  .maker blockquote{border-left:2px solid var(--ochre);padding-left:30px}
+  .maker blockquote p{font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);line-height:1.35;color:var(--ink);letter-spacing:-.01em}
+  .maker blockquote cite{display:block;margin-top:18px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink3)}
   .coffee-card{display:block;background:var(--card);border:1px solid var(--hair2);border-radius:22px;padding:36px}
   .coffee-card h3{font-family:var(--serif);font-weight:500;font-size:30px;letter-spacing:-.01em}
   .coffee-card p{color:var(--ink2);font-size:16px;margin-top:12px}
@@ -249,8 +280,12 @@
   .anim .feature-card{opacity:0;transform:translateY(55px) rotateX(18deg);
     transition:opacity .8s ease var(--d,0s),transform .8s var(--ease-out) var(--d,0s),border-color .3s ease,box-shadow .3s ease}
   .anim .feature-card.in{opacity:1;transform:none}
-  .anim .feature-card.in.settled{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
-  .anim .feature-card.in.settled:hover{transform:translateY(-6px)}
+  .anim .feature-card.in.settled{transition:border-color .3s ease}
+  .anim .kin-path .step::after{transform:scaleX(0);transition:transform .6s var(--ease-out)}
+  .anim .feature-card.in .kin-path .step::after{transform:none}
+  .anim .feature-card.in .kin-path .step:nth-of-type(2)::after{transition-delay:.55s}
+  .anim .kin-say{opacity:0;transition:opacity .6s ease 1.1s}
+  .anim .feature-card.in .kin-say{opacity:1}
   .anim .big .w{opacity:.18}
   .hero .eyebrow{--d:.1s}
   .hero h1 .ln:nth-child(1) > span{--d:.22s}
@@ -278,8 +313,20 @@
     .screens-head{grid-template-columns:1fr;grid-gap:0;gap:0}
     .screens-head .lead{justify-self:start;margin-top:18px}
     .phones{grid-template-columns:repeat(2,1fr);grid-row-gap:44px;row-gap:44px}
-    .grid{grid-template-columns:repeat(2,1fr)}
-    .also{grid-template-columns:repeat(2,1fr)}
+    .bento{grid-template-columns:1fr 1fr}
+    .feature-card{grid-column:span 1}
+    .b-kin,.b-also{grid-column:span 2}
+    .voices .quotes{grid-template-columns:1fr 1fr}
+    .quote.q1{grid-column:span 2}
+    .hero-grid{display:flex;flex-direction:column;align-items:stretch;grid-gap:0;gap:0}
+    .hero-copy{display:contents}
+    .hero .eyebrow{order:1;align-self:flex-start}
+    .hero h1{order:2}
+    .hero .subtitle{order:3}
+    .grove{order:4;margin:30px auto 0}
+    .hero .kin{order:5;text-align:center}
+    .hero .cta{order:6}
+    .hero .rating-row{order:7}
     .desk,.faq-wrap,.maker .container{grid-template-columns:1fr;grid-gap:44px;gap:44px}
     .scroll-down{display:none}
     .hero-shapes-mid{display:none}
@@ -299,7 +346,20 @@
     .trust ul{grid-gap:16px 12px;gap:16px 12px}
     .trust li{font-size:18px}
     .stars svg:nth-child(n+2){display:none}
-    .grid,.also{grid-template-columns:1fr}
+    .bento{grid-template-columns:1fr;grid-gap:16px;gap:16px}
+    .feature-card,.b-kin,.b-also{grid-column:auto}
+    .feature-card{padding:28px 24px}
+    .b-kin{grid-template-columns:1fr}
+    .kin-path .chip{font-size:15px;padding:6px 11px}
+    .kin-path .step{margin:0 6px}
+    .also{grid-template-columns:1fr}
+    .voices .quotes{grid-template-columns:1fr;grid-gap:40px;gap:40px}
+    .quote.q1{grid-column:auto}
+    .hero{padding-top:92px}
+    .grove{height:400px;margin-top:22px}
+    .vines-d{display:none}
+    .vines-m{display:block}
+    .n1,.n2{top:0}.n3{top:140px}.n4,.n5{top:270px}
     #screens{padding-bottom:80px}
     .phones{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:44px -16px 0;padding:6px 16px 10px;grid-gap:0;gap:0}
     .phone{flex:0 0 74%;margin-right:16px;scroll-snap-align:center}
@@ -307,13 +367,19 @@
     .phone .frame{border-radius:26px;padding:7px}
     .phone .frame img{border-radius:20px}
     .phone figcaption{font-size:17px}
-    .qa summary{font-size:19px}
-    .qa .ans p{padding-right:0}
+    .qa{padding-left:42px}
+    .qa::before{left:11px}
+    .qa .pm{left:-41px}
+    .qa summary{font-size:20px}
     .coffee-card{padding:28px 22px}
     .closing-cta{padding:110px 16px}
     .glow-wrap::before{width:300px;height:300px;margin:-150px 0 0 -150px}
   }
   @media (max-width:360px){
+    .kin-demo{padding:20px 14px 18px}
+    .kin-path .chip{font-size:14px;padding:6px 10px}
+    .kin-path .step{margin:0 5px}
+    .feature-card{padding:24px 18px}
     .hero h1{font-size:46px}
     .node{width:116px}
     .n3{margin-left:-58px}
@@ -403,11 +469,17 @@
     </div>
 
     <div class="grove" role="group" aria-label="A sample family. Choose two people to see how they are related.">
-      <svg class="vines" viewBox="0 0 520 480" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="vines vines-d" viewBox="0 0 520 480" preserveAspectRatio="none" aria-hidden="true">
         <path class="v1" pathLength="1" d="M132 96 C132 160 260 130 260 188"/>
         <path class="v2" pathLength="1" d="M388 96 C388 160 260 130 260 188"/>
         <path class="v3" pathLength="1" d="M260 282 C260 330 142 310 142 352"/>
         <path class="v4" pathLength="1" d="M260 282 C260 330 378 310 378 352"/>
+      </svg>
+      <svg class="vines vines-m" viewBox="0 0 520 400" preserveAspectRatio="none" aria-hidden="true">
+        <path class="v1" pathLength="1" d="M132 90 C132 125 260 115 260 152"/>
+        <path class="v2" pathLength="1" d="M388 90 C388 125 260 115 260 152"/>
+        <path class="v3" pathLength="1" d="M260 236 C260 262 142 254 142 282"/>
+        <path class="v4" pathLength="1" d="M260 236 C260 262 378 254 378 282"/>
       </svg>
       <div class="gen g1">
         <button type="button" class="node n1" data-person="ibrahim" aria-pressed="false"><span class="sway"><span class="ava">IU</span><span class="nm">Ibrahim Umar</span><span class="yr">1935 – 2010</span></span></button>
@@ -454,6 +526,26 @@
   </div>
 </section>
 
+<section class="voices" aria-labelledby="voices-h">
+  <div class="container">
+    <h2 id="voices-h" data-a>In their own words.</h2>
+    <div class="quotes">
+      <figure class="quote q1" data-a>
+        <blockquote><p>Kinestry is honestly one of the best family tree apps I’ve used. … It’s simple, clean, and easy to use.</p></blockquote>
+        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Isagani</b>Google Play review, August 2026</figcaption>
+      </figure>
+      <figure class="quote" data-a>
+        <blockquote><p>A brilliantly designed app. A must have.</p></blockquote>
+        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Usman</b>Google Play review, October 2026</figcaption>
+      </figure>
+      <figure class="quote" data-a>
+        <blockquote><p>exactly what i was looking for no ads, no claud, having it forever.</p></blockquote>
+        <figcaption><span class="stars-s" role="img" aria-label="5 out of 5 stars"></span><b>Collins</b>Google Play review, October 2026</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="privacy" aria-labelledby="privacy-h">
   <div class="container">
     <h2 class="big" id="privacy-h">We couldn't read your tree if we wanted to.</h2>
@@ -468,43 +560,55 @@
       <h2 id="features-h" data-a>Made for real families,<br>not databases.</h2>
       <p class="lead" data-a>A focused tool with one hero: the tree. Everything in it exists to help you record, explore and pass on your family's story.</p>
     </div>
-    <div class="grid">
+    <div class="bento">
+      <article class="feature-card b-kin">
+        <div>
+          <h3>Kinship, explained</h3>
+          <p>Tap any two people and Kinestry names the relation, then traces the path between them one step at a time through the tree.</p>
+        </div>
+        <div class="kin-demo" aria-hidden="true">
+          <div class="kin-path"><span class="chip">Ibrahim</span><span class="step"></span><span class="chip">Nadia</span><span class="step"></span><span class="chip end">Dina</span></div>
+          <p class="kin-say">Ibrahim is Dina's grandfather.</p>
+        </div>
+      </article>
+      <article class="feature-card b-script">
+        <h3>Names in your own script</h3>
+        <p>Twenty scripts, on screen and in print. Every typeface ships inside the app.</p>
+        <ul class="scripts" aria-label="The name Nadia, written in five scripts">
+          <li lang="ar" dir="rtl">نادية</li><li lang="he" dir="rtl">נדיה</li><li lang="hi">नादिया</li><li lang="zh">娜迪亚</li><li lang="ko">나디아</li>
+        </ul>
+      </article>
       <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M12 8v3M8 15v-2h8v2M12 11v2"/><circle cx="12" cy="7" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></div>
         <h3>A canvas like paper</h3>
         <p>Warm tones, classic serif names, connectors drawn the way you'd draw them by hand. We test it on a 532-person family, and panning 350 people on a mid-range phone barely drops a frame.</p>
       </article>
       <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 7.5c4 1 4 4 4 6s1 3 3.5 3.5"/></svg></div>
-        <h3>Kinship, explained</h3>
-        <p>Tap any two people and Kinestry names the relation, then traces the path between them one step at a time through the tree.</p>
-      </article>
-      <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg></div>
         <h3>Share the story</h3>
-        <p>A vector PDF anyone can open, a high-resolution image for the group chat, or GEDCOM so you are never locked in. It prints from A4 up to A0 — <a href="print-family-tree.html">here is how to choose the size</a>.</p>
+        <p>A vector PDF anyone can open, a high-resolution image for the group chat, or GEDCOM so you are never locked in — <a href="print-family-tree.html">how to choose the size</a>.</p>
+        <svg class="sizes" viewBox="0 0 214 134" role="img" aria-label="Page sizes drawn to scale: A4, A3, A1 and A0">
+          <rect x="1" y="90" width="21" height="30" rx="1"/><text x="11.5" y="132">A4</text>
+          <rect x="28" y="78" width="30" height="42" rx="1"/><text x="43" y="132">A3</text>
+          <rect x="64" y="36" width="59" height="84" rx="1.5"/><text x="93.5" y="132">A1</text>
+          <rect class="a0" x="129" y="1" width="84" height="119" rx="1.5"/><text x="171" y="132">A0</text>
+        </svg>
       </article>
       <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M9 4v2M6 6c0 4 3 7 7 8M12 6c-1 4-4 7-8 8"/><path d="M13 20l4-10 4 10M14.5 17h5"/></svg></div>
-        <h3>Names in your own script</h3>
-        <p>Twenty scripts, on screen and in print — Arabic, Hebrew, Devanagari, Tamil, Chinese, Korean and more. Every typeface ships inside the app.</p>
-      </article>
-      <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg></div>
         <h3>Backups you own</h3>
         <p>One tap writes a complete backup, photos included, to a file on your phone. Restore any time, or carry the whole tree to a new device.</p>
       </article>
       <article class="feature-card">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="8" rx="2"/><rect x="13" y="12" width="8" height="8" rx="2"/><path d="M11 8h3a2 2 0 0 1 2 2v2"/></svg></div>
         <h3>More than one family</h3>
         <p>Keep separate trees on one device — your side, their side, a line you're still researching. Nothing leaks from one into another.</p>
       </article>
+      <article class="feature-card b-also">
+        <div class="also">
+          <div><h3>Gentle with the past</h3><p>Year-only dates are welcome. Grandma's exact birthday can stay a family mystery.</p></div>
+          <div><h3>Marriages that ended</h3><p>Mark one divorced or separated. Children and every other link stay as they are.</p></div>
+          <div><h3>Put right a wrong link</h3><p>Hold the row and the link comes apart. Nobody is deleted, and Undo puts it back.</p></div>
+          <div><h3>Coming up</h3><p>Birthdays and anniversaries in one place, with reminders built by your phone alone.</p></div>
+        </div>
+      </article>
     </div>
-    <div class="also">
-      <div data-a><h3>Gentle with the past</h3><p>Year-only dates are welcome. Grandma's exact birthday can stay a family mystery.</p></div>
-      <div data-a><h3>Marriages that ended</h3><p>Mark one divorced or separated. Children and every other link stay as they are.</p></div>
-      <div data-a><h3>Put right a wrong link</h3><p>Hold the row and the link comes apart. Nobody is deleted, and Undo puts it back.</p></div>
-      <div data-a><h3>Coming up</h3><p>Birthdays and anniversaries in one place, with reminders built by your phone alone.</p></div>
     </div>
   </div>
 </section>
