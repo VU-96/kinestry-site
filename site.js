@@ -93,7 +93,7 @@
         .then(function (b) { return URL.createObjectURL(b); })
         .catch(function () { return null; });
     })).then(function (urls) {
-      if (urls.some(function (u) { return !u; })) return; // leave it static
+      if (urls.some(function (u) { return !u; })) return;
       var link = document.createElement('link');
       link.rel = 'icon';
       link.type = 'image/png';
