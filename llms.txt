@@ -6,8 +6,8 @@
 > servers, so a family tree exists only on the device its owner built it on.
 
 Kinestry is published by Valeed Labs. The app is free; it contains no ads and
-no in-app purchases. The store listing is available in 76 languages, although
-the app's own interface is English.
+no in-app purchases. The store listing is translated into many languages,
+although the app's own interface is English.
 
 ## What it does
 

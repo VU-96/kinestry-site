@@ -25,7 +25,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/newsreader.full.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=20261114">
+<link rel="stylesheet" href="site.css?v=20261114b">
 <script src="boot.js?v=20261114"></script>
 <style>
   section{padding:120px 0;position:relative}
@@ -208,11 +208,15 @@
     border:1px solid var(--hair);border-radius:999px;padding:9px 18px;min-height:44px;cursor:pointer;margin-left:20px;flex:none}
   .anim .marquee-toggle{display:inline-flex}
   .marquee-toggle:hover{border-color:var(--pine)}
-  .marquee{margin-top:52px;overflow:hidden;padding:10px 0 18px;
+  .marquee{margin-top:52px;padding:10px 0 18px;overflow-x:auto;scroll-snap-type:x mandatory}
+  .anim .marquee{overflow:hidden;scroll-snap-type:none;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-  .marquee-track{display:flex;align-items:stretch;width:max-content;animation:marquee var(--dur,70s) linear infinite}
+  .marquee-track{display:flex;align-items:stretch;width:max-content}
+  .anim .marquee-track{animation:marquee var(--dur,70s) linear infinite}
   .marquee-set{display:flex;align-items:stretch;list-style:none;padding-right:24px}
-  .review{flex:0 0 440px;margin-right:24px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--hair2);
+  .marquee-set[aria-hidden="true"]{display:none}
+  .anim .marquee-set[aria-hidden="true"]{display:flex}
+  .review{flex:0 0 440px;margin-right:24px;scroll-snap-align:start;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--hair2);
     border-radius:22px;padding:28px 30px 26px;box-shadow:0 1px 2px rgba(33,28,21,.04);
     transition:transform .35s var(--ease-out),border-color .3s ease,box-shadow .35s ease}
   .review:last-child{margin-right:0}
@@ -340,8 +344,6 @@
   @media (max-width:900px){
     section{padding:90px 0}
     .hero{padding-top:100px}
-    .hero-grid{grid-template-columns:1fr}
-    .grove{margin:0 auto}
     .trust ul{grid-template-columns:repeat(2,1fr)}
     .screens-head{grid-template-columns:1fr;grid-gap:0;gap:0}
     .screens-head .lead{justify-self:start;margin-top:18px}
@@ -433,11 +435,6 @@
   @media (prefers-reduced-motion:reduce){
     .blob,.mark,.node .sway,.scroll-down svg,.badge i,.glow-wrap::before{animation:none!important}
     header.top nav a{animation:none!important}
-    .marquee-track{animation:none!important}
-    .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scroll-snap-type:x mandatory}
-    .marquee-set[aria-hidden="true"]{display:none}
-    .review{scroll-snap-align:start}
-    .marquee-toggle{display:none!important}
   }
   @media print{
     header.top,.hero-shapes-back,.hero-shapes-mid,.scroll-down,.glow-wrap::before{display:none}
@@ -577,7 +574,7 @@
 <section class="voices" aria-labelledby="voices-h">
   <div class="container voices-head">
     <h2 id="voices-h" data-a>In their own words.</h2>
-    <button type="button" class="marquee-toggle" aria-pressed="false" aria-controls="reviews">Pause</button>
+    <button type="button" class="marquee-toggle" aria-controls="reviews">Pause</button>
   </div>
   <div class="marquee" id="reviews" data-a>
     <div class="marquee-track">
@@ -973,7 +970,7 @@
       "name": "Can I work on my tree on a computer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Desktop Mode serves your tree to a browser on the same Wi‑Fi, so you can edit on a big screen with a keyboard. The connection is between your phone and your own computer; nothing travels over the internet."
+        "text": "Yes. Desktop Mode serves your tree to a browser on the same Wi-Fi, so you can edit on a big screen with a keyboard. The connection is between your phone and your own computer; nothing travels over the internet."
       }
     },
     {
@@ -988,6 +985,6 @@
 }
 </script>
 <script src="site.js?v=20261114b"></script>
-<script src="home.js?v=20261114c"></script>
+<script src="home.js?v=20261114d"></script>
 </body>
 </html>

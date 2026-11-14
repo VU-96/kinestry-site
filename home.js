@@ -66,7 +66,6 @@
       toggle.addEventListener('click', function () {
         var paused = marquee.classList.toggle('paused');
         toggle.textContent = paused ? 'Play' : 'Pause';
-        toggle.setAttribute('aria-pressed', String(paused));
       });
     }
     marquee.addEventListener('touchstart', function () { marquee.classList.add('held'); }, { passive: true });
