@@ -78,7 +78,7 @@
   a:focus-visible,button:focus-visible,summary:focus-visible{
     outline:2px solid var(--ochre);outline-offset:3px;border-radius:4px;
   }
-    footer{padding:64px 0 56px;border-top:1px solid var(--hair);margin-top:96px}
+    footer{padding:48px 0 44px;border-top:1px solid var(--hair);margin-top:64px}
   .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
   .foot small{display:block;color:var(--ink3);font-size:13px;margin-top:10px}
   .foot a{color:var(--pine);font-weight:600;text-decoration:none;font-size:14px}

@@ -85,14 +85,18 @@
     color:var(--ink3);
   }
   .rating::before{content:"\2605\00a0";color:var(--ochre)}
+  nav a.coffee{color:var(--ochre)}
+  nav a.coffee::before{content:"\2615\00a0\00a0";font-size:.95em}
+  nav a.coffee:hover{color:var(--ochre);opacity:.78}
+  @media (max-width:860px){ nav a.coffee{display:none} }
   #privacy{
     background:var(--pine);color:var(--onpine);
-    padding:92px 0;margin:86px 0 0;
+    padding:64px 0;margin:62px 0 0;
   }
   #privacy .eyebrow{color:var(--ochre)}
   #privacy h2{color:var(--onpine)}
   #privacy p{color:var(--onpine);opacity:.82}
-  #closer{padding:96px 0 110px;text-align:center}
+  #closer{padding:64px 0 76px;text-align:center}
   #closer h2{
     font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,42px);
     letter-spacing:-.01em;margin:0 0 14px;color:var(--ink);line-height:1.15;
@@ -109,7 +113,7 @@
   @media (prefers-reduced-motion:reduce){
     .js-reveal .reveal{opacity:1;transform:none;transition:none}
   }
-  #shots{padding:76px 0 24px}
+  #shots{padding:54px 0 20px}
   #shots h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,38px);
     margin:10px 0 36px;letter-spacing:-.01em;color:var(--ink)}
   .shotrow{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
@@ -125,7 +129,7 @@
   }
   @media (max-width:900px){
     .shotrow{grid-template-columns:repeat(2,1fr);gap:20px}
-    #shots{padding:56px 0 16px}
+    #shots{padding:40px 0 12px}
   }
   @media (max-width:520px){
     .shotrow{grid-template-columns:repeat(2,1fr);gap:14px}
@@ -179,7 +183,7 @@
   .stamp{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--pine);text-transform:uppercase}
   .stamp::before{content:"◆";color:var(--ochre);margin-right:10px;font-size:9px;vertical-align:2px}
 
-    #maker{padding:0 0 96px}
+    #maker{padding:0 0 60px}
   .note{max-width:34rem;border-left:2px solid var(--ochre);padding-left:26px}
   .note p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink)}
   .note cite{
@@ -190,7 +194,7 @@
 
     #privacy{padding-top:40px}
 
-    section{padding:96px 0}
+    section{padding:62px 0}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
   h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.12;margin:14px 0 10px;letter-spacing:-.01em}
   .sub{color:var(--ink2);max-width:54ch}
@@ -229,14 +233,14 @@
   .badge i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pine2);margin-right:8px;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-    .promise{background:var(--pine);color:var(--paper2);border-radius:26px;padding:74px 8%;text-align:center}
+    .promise{padding:8px 8%;text-align:center}
   .promise .eyebrow{color:var(--onpine);opacity:.86}
   .promise h2{color:var(--onpine)}
   .promise p{color:color-mix(in srgb, var(--paper2) 78%, transparent);max-width:58ch;margin:8px auto 0}
 
 
 @media (max-width:560px){
-    section{padding:56px 0}
+    section{padding:40px 0}
   #maker{padding-bottom:44px}
   #privacy{padding-top:24px}
 }
@@ -288,6 +292,7 @@
       <a href="#desktop">Desktop Mode</a>
       <a href="#privacy">Privacy</a>
       <a href="#questions">Questions</a>
+      <a class="coffee" href="https://www.buymeacoffee.com/kinestry" rel="noopener">Buy me a coffee</a>
       <div class="palettes" role="group" aria-label="Colour palette">
         <button type="button" class="sw" data-palette="heirloom" aria-pressed="false" title="Parchment" aria-label="Parchment"></button>
         <button type="button" class="sw" data-palette="dusk" aria-pressed="false" title="Dusk" aria-label="Dusk"></button>
