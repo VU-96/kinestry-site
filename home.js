@@ -8,10 +8,6 @@
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function mq(q) { return !!(window.matchMedia && window.matchMedia(q).matches); }
 
-  var bar = document.getElementById('top');
-  function onBar() { bar.classList.toggle('scrolled', (window.pageYOffset || 0) > 20); }
-  window.addEventListener('scroll', onBar, { passive: true });
-  onBar();
 
   var faqs = $$('.qa details');
   var canAnimate = anim && typeof document.body.animate === 'function';
@@ -78,6 +74,10 @@
   var STEP = { phone: 120, 'feature-card': 110 };
   var io = new IntersectionObserver(function (entries) {
     var batch = entries.filter(function (e) { return e.isIntersecting; }).map(function (e) { return e.target; });
+    if (batch.some(function (el) { return el.classList.contains('phone'); })) {
+      $$('.phone').forEach(function (ph) { if (batch.indexOf(ph) < 0 && !ph.classList.contains('in')) batch.push(ph); });
+      batch.sort(function (x, y) { return x.compareDocumentPosition(y) & 4 ? -1 : 1; });
+    }
     batch.forEach(function (el, i) {
       var step = 90;
       for (var k in STEP) { if (el.classList.contains(k)) step = STEP[k]; }

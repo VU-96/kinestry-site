@@ -1,114 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Page not found — Kinestry</title>
 <meta name="description" content="That page isn't here. Kinestry is a private, offline family tree for Android.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#2C4034">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
-<style>
-  .wrap{max-width:720px}
-  main{padding:96px 0 80px;text-align:center}
-  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase}
-  h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,52px);margin:14px 0 14px;letter-spacing:-.01em}
-  h1 em{font-style:italic;color:var(--pine)}
-  main p{color:var(--ink2);font-size:17px;max-width:44ch;margin:0 auto}
-  .back{display:inline-flex;gap:22px;margin-top:34px;flex-wrap:wrap;justify-content:center}
-  .back a{font-family:var(--mono);font-size:13px;color:var(--ochre);text-decoration:none;
-    border-bottom:1px solid color-mix(in srgb, var(--ochre) 40%, transparent);padding-bottom:2px}
-</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/newsreader.full.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hankengrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css?v=20261114">
 </head>
 <body>
-<a class="skip" href="#content">Skip to content</a>
-<header class="wrap">
-  <div class="bar">
-    <a class="brand" style="color:var(--ink)" href="index.html">
-    <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
-      <g transform="translate(-23.016,-33.333) scale(1.5873)">
-        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M46 78 L46 52"/>
-          <path d="M46 52 C46 40 30 40 26 30"/>
-          <path d="M46 52 C46 40 62 40 66 30"/>
-          <path d="M46 56 C46 48 38 46 34 56"/>
-          <path d="M46 56 C46 48 54 46 58 56"/>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top">
+  <div class="container bar">
+    <a class="brand" href="/index.html" aria-label="Kinestry home">
+      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="translate(-23.016,-33.333) scale(1.5873)">
+          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M46 78 L46 52"/><path d="M46 52 C46 40 30 40 26 30"/><path d="M46 52 C46 40 62 40 66 30"/>
+            <path d="M46 56 C46 48 38 46 34 56"/><path d="M46 56 C46 48 54 46 58 56"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="46" cy="50" r="4.5"/><circle cx="24" cy="27" r="6"/><circle cx="68" cy="27" r="6"/>
+            <circle cx="33" cy="58" r="4.5"/><circle cx="59" cy="58" r="4.5"/>
+          </g>
+          <rect x="42" y="78" width="8" height="6" rx="2" fill="var(--ochre)"/>
         </g>
-        <g fill="currentColor">
-          <circle cx="46" cy="50" r="4.5"/>
-          <circle cx="24" cy="27" r="6"/>
-          <circle cx="68" cy="27" r="6"/>
-          <circle cx="33" cy="58" r="4.5"/>
-          <circle cx="59" cy="58" r="4.5"/>
-        </g>
-        <rect x="42" y="78" width="8" height="6" rx="2" fill="var(--ochre)"/>
-      </g>
-    </svg>
-    <b>Kinestry</b>
-  </a>
+      </svg>
+      <b>Kinestry</b>
+    </a>
+    <nav aria-label="Main">
+      <a href="/index.html#features">What it does</a>
+      <a href="/index.html#desktop">Desktop Mode</a>
+      <a href="/index.html#privacy">Privacy</a>
+      <a href="/index.html#questions">Questions</a>
+      <a class="coffee" href="https://www.buymeacoffee.com/kinestry" rel="noopener">Buy me a coffee</a>
+      <a class="btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">Download</a>
+    </nav>
   </div>
 </header>
 
-<main class="wrap" id="content">
-  <div class="kicker">404</div>
-  <h1>This branch <em>doesn't exist.</em></h1>
-  <p>The page you asked for isn't here — but the tree is still standing.</p>
-  <div class="back">
-    <a href="index.html">Back to the home page</a>
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms of use</a>
+<main id="main" class="missing">
+  <div class="container">
+    <h1>This branch <em>doesn't exist.</em></h1>
+    <p>The page you asked for isn't here — but the tree is still standing.</p>
+    <div class="actions">
+      <a class="btn-primary" href="/index.html">Back to the home page</a>
+      <a href="/privacy.html">Privacy policy</a>
+      <a href="/terms.html">Terms of use</a>
+    </div>
   </div>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <div>
-      <a class="brand" href="index.html">
-        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true" style="color:var(--pine)">
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="/index.html">
+        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true">
           <g transform="translate(-23.016,-33.333) scale(1.5873)">
             <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M46 78 L46 52"/>
-              <path d="M46 52 C46 40 30 40 26 30"/>
-              <path d="M46 52 C46 40 62 40 66 30"/>
-              <path d="M46 56 C46 48 38 46 34 56"/>
-              <path d="M46 56 C46 48 54 46 58 56"/>
+              <path d="M46 78 L46 52"/><path d="M46 52 C46 40 30 40 26 30"/><path d="M46 52 C46 40 62 40 66 30"/>
+              <path d="M46 56 C46 48 38 46 34 56"/><path d="M46 56 C46 48 54 46 58 56"/>
             </g>
             <g fill="currentColor">
-              <circle cx="46" cy="50" r="4.5"/>
-              <circle cx="24" cy="27" r="6"/>
-              <circle cx="68" cy="27" r="6"/>
-              <circle cx="33" cy="58" r="4.5"/>
-              <circle cx="59" cy="58" r="4.5"/>
+              <circle cx="46" cy="50" r="4.5"/><circle cx="24" cy="27" r="6"/><circle cx="68" cy="27" r="6"/>
+              <circle cx="33" cy="58" r="4.5"/><circle cx="59" cy="58" r="4.5"/>
             </g>
             <rect x="42" y="78" width="8" height="6" rx="2" fill="var(--ochre)"/>
           </g>
         </svg>
-        <b style="font-size:19px">Kinestry</b>
-      </a>
-      <small>© 2026 · Your data stays home.<br>Only available on Google Play —
-      copies from anywhere else are not ours.</small>
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry">
-        <img src="google-play-badge.png" alt="Get it on Google Play" width="646" height="250">
-      </a>
+        <b style="font-size:21px">Kinestry</b>
+        </a>
+        <p>A private family tree that lives on your phone. No cloud, no account, no trackers.</p>
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kinestry.kinestry"><img src="/google-play-badge.png" alt="Get it on Google Play" width="646" height="250" loading="lazy" decoding="async"></a>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <p class="foot-h">The app</p>
+          <a href="/index.html#features">What it does</a>
+          <a href="/index.html#desktop">Desktop Mode</a>
+          <a href="/index.html#questions">Questions</a>
+          <a href="https://www.buymeacoffee.com/kinestry" rel="noopener">Buy me a coffee</a>
+        </div>
+        <div>
+          <p class="foot-h">Guides and legal</p>
+          <a href="/print-family-tree.html">How to print a family tree</a>
+          <a href="/privacy.html">Privacy policy</a>
+          <a href="/terms.html">Terms of use</a>
+          <a href="/fonts/OFL.txt">Typeface licences</a>
+        </div>
+        <div>
+          <p class="foot-h">Contact</p>
+          <a href="mailto:kinestryapp@gmail.com">kinestryapp@gmail.com</a>
+        </div>
+      </nav>
     </div>
-    <div class="links">
-      <a href="index.html">Home</a>
-      <a href="print-family-tree.html">How to print a family tree</a>
-      <a href="privacy.html">Privacy policy</a>
-      <a href="terms.html">Terms of use</a>
-      <a href="fonts/OFL.txt">Typeface licences</a>
-      <a href="mailto:kinestryapp@gmail.com">kinestryapp@gmail.com</a>
+    <div class="foot-bottom">
+      <span>© 2026 Kinestry. Your data stays home.</span>
+      <span>Only available on Google Play — copies from anywhere else are not ours.</span>
     </div>
   </div>
 </footer>
-<script src="site.js" defer></script>
+<script src="/site.js?v=20261114" defer></script>
 </body>
 </html>

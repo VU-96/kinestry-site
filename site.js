@@ -84,7 +84,7 @@
 
     var paths = [];
     for (var i = 0; i < FRAMES; i++) {
-      paths.push('favicon-anim/f' + ('0' + i).slice(-2) + '.png');
+      paths.push('/favicon-anim/f' + ('0' + i).slice(-2) + '.png');
     }
 
     Promise.all(paths.map(function (p) {
@@ -110,4 +110,12 @@
       })();
     });
   }
+})();
+
+(function () {
+  var bar = document.getElementById('top');
+  if (!bar) return;
+  function onBar() { bar.classList.toggle('scrolled', (window.pageYOffset || 0) > 20); }
+  window.addEventListener('scroll', onBar, { passive: true });
+  onBar();
 })();
