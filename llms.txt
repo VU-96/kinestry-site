@@ -14,22 +14,32 @@ although the app's own interface is English.
 - Builds a family tree of parents, partners, children and other relatives, from
   a few people to several hundred, on a paper-like canvas.
 - Holds several separate family trees on one device, each in its own database.
-- Records birth, marriage and death dates with flexible precision, plus
-  photographs, notes, places, residences and life events.
+- Records birth, marriage and death dates with flexible precision (a year, a
+  month or a full date), plus photographs, notes, and where someone was born,
+  lived and died. It has no general "life events" field.
 - Marks marriages as divorced or separated, disconnects incorrect
-  relationships without deleting anyone, and undoes relationship changes.
+  relationships without deleting anyone, and offers a short undo after
+  removing a person or a branch or disconnecting a link.
 - Shows how any two people in a tree are related.
 - Searches the tree and shows a person's age and residence on their card.
 - Reorders siblings and adjusts connecting lines and spacing.
-- Exports the tree as PDF (several page sizes up to A0), PNG, GEDCOM, or a
-  JSON backup file the owner keeps.
+- Exports the tree as PDF (A4, Letter, A3, A1 or A0, or one full-size page),
+  PNG, GEDCOM, or a JSON backup file the owner keeps.
+- Imports Kinestry backup files and Family Tree Builder .ftz archives, always
+  as a new tree, never over an existing one.
+- Shares a copy of a tree, photos included, with relatives as a file through
+  any app on the phone (WhatsApp, email and so on), with a link to the app.
+  The relative opens it in Kinestry as their own separate tree. Copies do not
+  stay in step: sharing is a copy, not sync.
+- Four card styles and four colour themes, two of them dark, and optional
+  colours for men and women on the cards.
 - Desktop Mode: the phone runs a small web server on the local Wi-Fi network so
   a laptop browser can view and edit the same tree. Pairing needs a code shown
   on the phone and explicit approval. Nothing goes over the internet.
 - Optional reminders for birthdays, anniversaries and memorial days, scheduled
   and delivered entirely by the phone.
 - Renders names in many scripts, including Arabic, Hebrew, Chinese, Korean,
-  Devanagari, Bengali, Tamil, Telugu, Malayalam, Sinhala, Khmer, Armenian,
+  Devanagari, Bengali, Tamil, Telugu, Malayalam, Sinhala, Khmer, Japanese, Armenian,
   Georgian, Thai, Greek and Cyrillic.
 
 ## What it deliberately does not do
@@ -48,7 +58,8 @@ although the app's own interface is English.
 
 Kinestry suits someone who wants their family history to stay on their own
 device and is willing to manage their own backups. It does not suit someone who
-wants automatic cloud sync, collaborative editing by several people at once,
+wants automatic cloud sync, one tree edited by several people at once (a
+shared copy is a separate tree),
 record-matching against genealogy archives, or DNA features. It has none of
 those.
 
